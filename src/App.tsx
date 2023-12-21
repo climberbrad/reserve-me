@@ -1,55 +1,38 @@
 import './App.css'
-import AssetCard, {AssetData} from "./AssetCard.tsx";
 import {Trip, TripData} from "./Trip.tsx";
-import {assets, myTrip} from "./SampleData.ts";
+import {EMPTY_TRIP} from "./SampleData.ts";
 import {useState} from "react";
-import {Drawer} from "@mui/material";
+import {AppBar, Drawer, Toolbar, Typography} from "@mui/material";
+import AssetList from "./AssetList.tsx";
 
 
 function App() {
-    const [trip, setTrip] = useState<TripData>(myTrip)
-
-    const handleReserve = (asset: AssetData) => {
-        console.log('Reserve', asset.name)
-    }
+    const [trip, setTrip] = useState<TripData>(EMPTY_TRIP)
 
     const handleUpdateTrip = (trip: TripData) => {
         setTrip(trip)
     }
 
-    const filterStart = (asset: AssetData, trip: TripData): boolean => {
-        if (trip.startDate) {
-            return trip.startDate >= asset.startDate && trip.startDate < asset.endDate;
-        }
-
-        return true;
-    }
-
-    const filterEnd = (asset: AssetData, trip: TripData): boolean => {
-        if (trip.endDate) {
-            return asset.endDate >= trip.endDate && asset.startDate < trip.endDate
-        }
-
-        return true
-    }
-
-    const filterNumPeople = (asset: AssetData, trip: TripData): boolean => {
-        if (trip.numPeople > 0) {
-            return asset.numSleeps >= trip.numPeople;
-        }
-
-        return true;
-    }
+    const drawerWidth = 250;
 
     return (
         <>
+            <AppBar
+                position="fixed"
+                sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}
+            >
+                <Toolbar>
+                    <Typography fontSize={36} color='#ffffff'>Weekend Getaway</Typography>
+                </Toolbar>
+            </AppBar>
+            <Toolbar/>
+
             <Drawer
                 sx={{
-                    width: 250,
-                    background: '#2f2828',
+                    width: drawerWidth,
                     flexShrink: 0,
                     '& .MuiDrawer-paper': {
-                        width: 250,
+                        width: drawerWidth,
                         boxSizing: 'border-box',
                     },
                 }}
@@ -58,13 +41,7 @@ function App() {
             >
                 <Trip trip={trip} handleUpdateTrip={handleUpdateTrip}/>
             </Drawer>
-            {
-                assets
-                    .filter((asset) => filterNumPeople(asset, trip))
-                    .filter((asset) => filterStart(asset, trip))
-                    .filter((asset) => filterEnd(asset, trip))
-                    .map((asset) => <AssetCard key={asset.id} asset={asset} reserve={handleReserve}/>)
-            }
+            <AssetList {...trip} />
         </>
     )
 }

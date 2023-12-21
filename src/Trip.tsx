@@ -3,8 +3,8 @@ import {SelectChangeEvent} from "@mui/material";
 
 export interface TripData {
     name: string;
-    startDate: number;
-    endDate: number;
+    startDate: number | undefined;
+    endDate: number | undefined;
     numPeople: number;
 }
 
@@ -44,11 +44,9 @@ export function Trip(props: TripProps): React.ReactElement {
         props.handleUpdateTrip({...props.trip, endDate: utcDate})
     }
 
-    const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleNameChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         props.handleUpdateTrip({...props.trip, name: event.target.value.trim()})
     }
-
-
 
     return (
         <>

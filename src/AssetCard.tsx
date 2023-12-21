@@ -24,7 +24,7 @@ const formatDate = (utc: number): string => {
 
 export default function AssetCard(data: CardProps): React.ReactElement {
     return (
-        <Card sx={{ minWidth: 450, marginY: 2 }}>
+        <Card variant='outlined' sx={{ minWidth: 500, marginY: 2, background: '#ffffff' }}>
             <CardContent>
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                     Available: {formatDate(data.asset.startDate)} - {formatDate(data.asset.endDate)}

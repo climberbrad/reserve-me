@@ -1,14 +1,14 @@
 import {TripData} from "./Trip.tsx";
 import {AssetData} from "./AssetCard.tsx";
 
-export const myTrip: TripData = {
-    name: 'Brads big adventure',
-    startDate: Date.UTC(2024, 11,15),
-    endDate: Date.UTC(2024, 11,20),
-    numPeople: 1,
+export const EMPTY_TRIP: TripData = {
+    name: 'New trip',
+    startDate: undefined,
+    endDate: undefined,
+    numPeople: 0,
 }
 
-export const assets: AssetData[] = [
+export const sampleAssets: AssetData[] = [
     {
         id: '1',
         startDate: Date.UTC(2024, 11,15),
