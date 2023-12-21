@@ -2,6 +2,7 @@ import {FormControl, InputLabel, MenuItem, Select, TextField} from "@mui/materia
 import {SelectChangeEvent} from "@mui/material";
 
 export interface TripData {
+    id: string | undefined;
     name: string;
     startDate: number | undefined;
     endDate: number | undefined;

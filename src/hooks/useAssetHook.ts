@@ -1,10 +1,7 @@
 import {sampleAssets} from "../SampleData.ts";
 import {AssetData} from "../AssetCard.tsx";
 import {useQuery, UseQueryResult} from "@tanstack/react-query";
-
-function wait (duration: number) {
-    return new Promise(resolve => setTimeout(resolve, duration))
-}
+import {wait} from "./HookUtils.ts";
 interface assetHookResponse {
     results: UseQueryResult<AssetData[]>
 }

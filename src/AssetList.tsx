@@ -3,12 +3,13 @@ import AssetCard, {AssetData} from "./AssetCard.tsx";
 import {Typography} from "@mui/material";
 import {TripData} from "./Trip.tsx";
 
-export default function AssetList(trip: TripData): React.ReactElement {
-    const assetHook = useAssetHook();
+interface AssetListProps {
+    trip: TripData,
+    handleReserve:(asset: AssetData) => void,
+}
 
-    const handleReserve = (asset: AssetData) => {
-        console.log('Reserve', asset.name)
-    }
+export default function AssetList(props: AssetListProps): React.ReactElement {
+    const assetHook = useAssetHook();
 
     const filterStart = (asset: AssetData, trip: TripData): boolean => {
         if (trip.startDate) {
@@ -39,10 +40,10 @@ export default function AssetList(trip: TripData): React.ReactElement {
 
     return (
         <>
-            {assetHook.results.data?.filter((asset) => filterNumPeople(asset, trip))
-                .filter((asset) => filterStart(asset, trip))
-                .filter((asset) => filterEnd(asset, trip))
-                .map((asset) => <AssetCard key={asset.id} asset={asset} reserve={handleReserve}/>)
+            {assetHook.results.data?.filter((asset) => filterNumPeople(asset, props.trip))
+                .filter((asset) => filterStart(asset, props.trip))
+                .filter((asset) => filterEnd(asset, props.trip))
+                .map((asset) => <AssetCard key={asset.id} asset={asset} reserve={props.handleReserve}/>)
             }
         </>)
 }

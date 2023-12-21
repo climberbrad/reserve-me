@@ -2,31 +2,32 @@ import './App.css'
 import {Trip, TripData} from "./Trip.tsx";
 import {EMPTY_TRIP} from "./SampleData.ts";
 import {useState} from "react";
-import {AppBar, Drawer, Toolbar, Typography} from "@mui/material";
+import {Drawer} from "@mui/material";
 import AssetList from "./AssetList.tsx";
+import {AssetData} from "./AssetCard.tsx";
+import useTripHook from "./hooks/useTripHook.ts";
+import HeaderBar from "./HeaderBar.tsx";
 
+export const drawerWidth = 250;
 
 function App() {
     const [trip, setTrip] = useState<TripData>(EMPTY_TRIP)
+    const tripHook = useTripHook();
 
     const handleUpdateTrip = (trip: TripData) => {
         setTrip(trip)
     }
 
-    const drawerWidth = 250;
+    const handleReserve = (asset: AssetData) => {
+        console.log('Reserve', asset.name)
+        tripHook.createTrip.mutate(trip)
+        setTrip(trip)
+    }
+
 
     return (
         <>
-            <AppBar
-                position="fixed"
-                sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}
-            >
-                <Toolbar>
-                    <Typography fontSize={36} color='#ffffff'>Weekend Getaway</Typography>
-                </Toolbar>
-            </AppBar>
-            <Toolbar/>
-
+            <HeaderBar />
             <Drawer
                 sx={{
                     width: drawerWidth,
@@ -41,7 +42,7 @@ function App() {
             >
                 <Trip trip={trip} handleUpdateTrip={handleUpdateTrip}/>
             </Drawer>
-            <AssetList {...trip} />
+            <AssetList trip={trip} handleReserve={handleReserve}/>
         </>
     )
 }
