@@ -29,7 +29,7 @@ export default function AssetCard(data: CardProps): React.ReactElement {
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                     Available: {formatDate(data.asset.startDate)} - {formatDate(data.asset.endDate)}
                 </Typography>
-                <Typography variant="h5" component="div">
+                <Typography color='#994d3d' variant="h5" component="div">
                     {data.asset.location}
                 </Typography>
                 <Typography sx={{ mb: 1.5 }} color="text.secondary">
