@@ -14,7 +14,7 @@ export default function Trips(props: TripsProps): ReactElement {
 
     return (<>
         {props.trips.map((trip) => (
-            trip.asset && <TripCard {...trip} />
+            trip.asset && <TripCard key={trip.id} {...trip} />
         ))}
     </>)
 }
