@@ -3,10 +3,11 @@ import {AssetData} from "./AssetCard.tsx";
 
 export const EMPTY_TRIP: TripData = {
     id: undefined,
-    name: 'New trip',
+    name: undefined,
     startDate: undefined,
     endDate: undefined,
     numPeople: 0,
+    asset: undefined,
 }
 
 export const sampleTrips: TripData[] = []

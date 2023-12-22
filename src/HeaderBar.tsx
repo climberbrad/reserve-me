@@ -12,6 +12,7 @@ import {
 } from "@mui/material";
 import {drawerWidth} from "./App.tsx";
 import {useState} from "react";
+import {Link} from "react-router-dom";
 
 export default function HeaderBar(): React.ReactElement {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -32,7 +33,9 @@ export default function HeaderBar(): React.ReactElement {
             >
                 <Box sx={{display: 'flex', justifyContent: 'space-between', marginRight: 2}}>
                     <Toolbar>
-                        <Typography fontSize={36} color='#ffffff'>Weekend Getaway</Typography>
+                        <Link key='home' to='/'>
+                            <Typography fontSize={36} color='#ffffff'>Weekend Getaway</Typography>
+                        </Link>
                     </Toolbar>
                     <Tooltip title="Account settings">
                         <IconButton
@@ -78,20 +81,20 @@ export default function HeaderBar(): React.ReactElement {
                                 },
                             },
                         }}
-                        transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-                        anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+                        transformOrigin={{horizontal: 'right', vertical: 'top'}}
+                        anchorOrigin={{horizontal: 'right', vertical: 'bottom'}}
                     >
                         <MenuItem onClick={handleClose}>
-                            <Avatar /> Profile
+                            <Avatar/> Profile
                         </MenuItem>
                         <MenuItem onClick={handleClose}>
-                            <Avatar /> My account
+                            <Avatar/> My account
                         </MenuItem>
-                        <Divider />
+                        <Divider/>
                         <MenuItem onClick={handleClose}>
-                            <ListItemIcon>
-                                My Trips
-                            </ListItemIcon>
+                            <Link key='trips' to='/trips/'>
+                                <ListItemIcon>My Trips</ListItemIcon>
+                            </Link>
                         </MenuItem>
                     </Menu>
                 </Box>

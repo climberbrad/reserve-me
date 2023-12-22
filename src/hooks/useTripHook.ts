@@ -3,7 +3,6 @@ import {wait} from "./HookUtils.ts";
 import {TripData} from "../Trip.tsx";
 import {sampleTrips} from "../SampleData.ts";
 
-
 export default function useTripHook() {
     const queryClient = useQueryClient();
 

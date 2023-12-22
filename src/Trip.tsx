@@ -1,12 +1,14 @@
 import {FormControl, InputLabel, MenuItem, Select, TextField} from "@mui/material";
 import {SelectChangeEvent} from "@mui/material";
+import {AssetData} from "./AssetCard.tsx";
 
 export interface TripData {
     id: string | undefined;
-    name: string;
+    name: string | undefined;
     startDate: number | undefined;
     endDate: number | undefined;
     numPeople: number;
+    asset: AssetData | undefined;
 }
 
 interface TripProps {
@@ -55,6 +57,7 @@ export function Trip(props: TripProps): React.ReactElement {
                 sx={{marginTop: 2, marginBottom: 8, marginLeft:1}}
                 id="standard-basic"
                 label={props.trip.name}
+                placeholder='New trip'
                 variant="standard"
                 onChange={(e) => handleNameChange(e)}
             />
@@ -65,7 +68,6 @@ export function Trip(props: TripProps): React.ReactElement {
                     id="date"
                     label="Start"
                     type="date"
-                    defaultValue="2024-12-15"
                     InputLabelProps={{
                         shrink: true,
                     }}
@@ -79,7 +81,6 @@ export function Trip(props: TripProps): React.ReactElement {
                     id="date"
                     label="End"
                     type="date"
-                    defaultValue="2024-12-20"
                     InputLabelProps={{
                         shrink: true,
                     }}
@@ -95,9 +96,7 @@ export function Trip(props: TripProps): React.ReactElement {
                     onChange={(e) => handleUpdateGuests(e)}
                     label="Guests"
                 >
-                    <MenuItem value="">
-                        <em>Any</em>
-                    </MenuItem>
+                    <MenuItem value={0}>Any</MenuItem>
                     <MenuItem value={1}>One</MenuItem>
                     <MenuItem value={2}>Two</MenuItem>
                     <MenuItem value={3}>Three</MenuItem>
