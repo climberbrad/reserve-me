@@ -63,10 +63,11 @@
   ],
   "Trips": [
     {
+      "id": "712F6C9C-52F5-4D6D-A549-76A5E2334EAA",
       "name": "My birthday weekend",
-      "startDate": "2024-08-15",
-      "endDate": "2024-08-19",
-      "assetId": 3
+      "startDate": 1721048400,
+      "endDate": 1721739600,
+      "assetId": "916C3052-97B3-41C4-94F8-32977435578B"
     }
   ]
 }

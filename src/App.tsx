@@ -44,7 +44,7 @@ function App() {
 
         const reserved = {...asset, available: false};
         assetHook.update.mutate(reserved)
-        tripHook.createTripMutation.mutate({...trip, asset: reserved})
+        tripHook.create.mutate({...trip, assetId: reserved.id})
         setTrip(EMPTY_TRIP)
         navigate('/trips')
 
@@ -87,8 +87,8 @@ function App() {
                     <Route
                         key={'/trips/'}
                         path={'/trips/'}
-                        element={<Trips trips={tripHook.tripsQuery.data || []}
-                                        isLoading={tripHook.createTripMutation.isPending || tripHook.tripsQuery.isLoading}/>}
+                        element={<Trips trips={tripHook.results.data || []}
+                                        isLoading={tripHook.create.isPending || tripHook.results.isLoading}/>}
                     />
                 </Routes>
             <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'center' }}

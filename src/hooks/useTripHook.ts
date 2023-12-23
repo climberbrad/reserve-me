@@ -1,13 +1,19 @@
-import {useMutation, useQuery, useQueryClient} from "@tanstack/react-query";
+import {useMutation, UseMutationResult, useQuery, useQueryClient, UseQueryResult} from "@tanstack/react-query";
 import {wait} from "./HookUtils.ts";
 import {createTrip, getTrips} from "../Api.ts";
+import {TripData} from "../Trip.tsx";
 
-export default function useTripHook() {
+interface tripHookResponse {
+    results: UseQueryResult<TripData[]>,
+    create: UseMutationResult<TripData, Error, TripData, unknown>,
+}
+
+export default function useTripHook(): tripHookResponse {
     const queryClient = useQueryClient();
 
     const tripsQuery = useQuery({
         queryKey: ['trips'],
-        queryFn: () => wait(1000).then(() =>  getTrips)
+        queryFn: () => wait(1000).then(getTrips)
     })
 
     const createTripMutation = useMutation({
@@ -18,5 +24,5 @@ export default function useTripHook() {
         },
     })
 
-    return { createTripMutation, tripsQuery }
+    return { results: tripsQuery, create: createTripMutation }
 }
