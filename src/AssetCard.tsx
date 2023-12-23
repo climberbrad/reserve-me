@@ -18,7 +18,6 @@ interface CardProps {
 }
 
 export default function AssetCard(props: CardProps): React.ReactElement {
-
     return (
         <Card variant='outlined' sx={{minWidth: 500, marginY: 2, background: '#ffffff'}}>
             <CardContent>
@@ -26,13 +25,13 @@ export default function AssetCard(props: CardProps): React.ReactElement {
                     Available: {formatDate(props.asset.startDate)} - {formatDate(props.asset.endDate)}
                 </Typography>
                 <Typography color='#994d3d' variant="h5" component="div">
-                    {props.asset.location}
+                    {props.asset.name}
                 </Typography>
                 <Typography sx={{mb: 1.5}} color="text.secondary">
                     sleeps {props.asset.numSleeps}
                 </Typography>
                 <Typography variant="body2">
-                    {props.asset.name}
+                    {props.asset.location}
                     <br/>
                     "{props.asset.quote}"
                 </Typography>

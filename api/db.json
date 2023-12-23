@@ -1,0 +1,72 @@
+{
+  "assets": [
+    {
+      "id": "31C9A3EB-7B0B-4E2C-BA7B-103EFA07502C",
+      "startDate": 1731654000,
+      "endDate": 1732086000,
+      "name": "Home on the Range",
+      "location": "Austin, TX",
+      "quote": "Oh give me a home...",
+      "numSleeps": 100,
+      "available": true
+    },
+    {
+      "id": "710DCD0D-71A1-4F5A-9A2E-3FC659DE5636",
+      "startDate": 1734246000,
+      "endDate": 1735628400,
+      "name": "Deep in the Heart!",
+      "location": "Dallas, TX",
+      "quote": "Moon river!",
+      "numSleeps": 4,
+      "available": true
+    },
+    {
+      "id": "65727886-2B9A-478D-B011-9B3145BCEBE4",
+      "startDate": 1733036400,
+      "endDate": 1735628400,
+      "name": "Prairie Palace",
+      "location": "Austin, TX",
+      "quote": "Home of the 10 gallon hat!",
+      "numSleeps": 6,
+      "available": true
+    },
+    {
+      "id": "FB9D7809-DF58-4675-ADB2-9C9A4DA055F8",
+      "startDate": 1733036400,
+      "endDate": 1735628400,
+      "name": "Ski Chalet",
+      "location": "Vail, CO",
+      "quote": "Powder hungry",
+      "numSleeps": 12,
+      "available": true
+    },
+    {
+      "id": "2A4CAF9C-9DC3-43D0-A124-33B944A30F42",
+      "startDate": 1727766000,
+      "endDate": 1735628400,
+      "name": "Hot tub heaven",
+      "location": "Steamboat Springs, CO",
+      "quote": "Deep thoughts...",
+      "numSleeps": 4,
+      "available": true
+    },
+    {
+      "id": "916C3052-97B3-41C4-94F8-32977435578B",
+      "startDate": 1717221600,
+      "endDate": 1725084000,
+      "name": "Beach Bungalow",
+      "location": "Key West, FL",
+      "quote": "Fun in the sun!",
+      "numSleeps": 7,
+      "available": true
+    }
+  ],
+  "Trips": [
+    {
+      "name": "My birthday weekend",
+      "startDate": "2024-08-15",
+      "endDate": "2024-08-19",
+      "assetId": 3
+    }
+  ]
+}

@@ -2,6 +2,7 @@ import {sampleAssets} from "../SampleData.ts";
 import {AssetData} from "../AssetCard.tsx";
 import {useMutation, UseMutationResult, useQuery, useQueryClient, UseQueryResult} from "@tanstack/react-query";
 import {wait} from "./HookUtils.ts";
+import {getAssets} from "../Api.ts";
 interface assetHookResponse {
     results: UseQueryResult<AssetData[]>,
     update: UseMutationResult<void, Error, AssetData, unknown>,
@@ -11,7 +12,7 @@ export default function useAssetHook (): assetHookResponse {
 
     const assetQuery = useQuery({
         queryKey: ['assets'],
-        queryFn: () => wait(1000).then(() =>  [...sampleAssets])
+        queryFn: () => wait(1000).then(getAssets)
     })
 
     const updateAsset = useMutation({
@@ -20,7 +21,7 @@ export default function useAssetHook (): assetHookResponse {
             sampleAssets[index] = asset;
         }),
         onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: ['assets'] })
+            void queryClient.invalidateQueries({ queryKey: ['assets'] })
         },
     })
 

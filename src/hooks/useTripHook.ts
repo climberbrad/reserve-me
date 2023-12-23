@@ -1,22 +1,22 @@
 import {useMutation, useQuery, useQueryClient} from "@tanstack/react-query";
 import {wait} from "./HookUtils.ts";
-import {TripData} from "../Trip.tsx";
-import {sampleTrips} from "../SampleData.ts";
+import {createTrip, getTrips} from "../Api.ts";
 
 export default function useTripHook() {
     const queryClient = useQueryClient();
 
     const tripsQuery = useQuery({
         queryKey: ['trips'],
-        queryFn: () => wait(1000).then(() =>  [...sampleTrips])
+        queryFn: () => wait(1000).then(() =>  getTrips)
     })
 
-    const createTrip = useMutation({
-        mutationFn: (trip: TripData) => wait(1000).then(() => sampleTrips.push({...trip, id: crypto.randomUUID()})),
-        onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: ['trips'] })
+    const createTripMutation = useMutation({
+        mutationFn: createTrip,
+        onSuccess: data => {
+            queryClient.setQueryData(['trips', data.id], data)
+           void queryClient.invalidateQueries({ queryKey: ['trips'] })
         },
     })
 
-    return { createTrip, tripsQuery }
+    return { createTripMutation, tripsQuery }
 }

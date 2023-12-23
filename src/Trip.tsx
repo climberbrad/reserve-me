@@ -1,6 +1,7 @@
 import {FormControl, InputLabel, MenuItem, Select, TextField} from "@mui/material";
 import {SelectChangeEvent} from "@mui/material";
 import {AssetData} from "./AssetCard.tsx";
+import {toEpocSecondsFromDate} from "./hooks/HookUtils.ts";
 
 export interface TripData {
     id: string | undefined;
@@ -24,27 +25,11 @@ export function Trip(props: TripProps): React.ReactElement {
     }
 
     const handleUpdateStart = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        const start = event.target.value
-
-        const datePart: string[] = start.split('-')
-        const year: number = Number(datePart[0])
-        const month: number = Number(datePart[1])-1
-        const day: number = Number(datePart[2])
-
-        const utcDate = Date.UTC(year, month, day)
-        props.handleUpdateTrip({...props.trip, startDate: utcDate})
+        props.handleUpdateTrip({...props.trip, startDate: toEpocSecondsFromDate(event.target.value)})
     }
 
     const handleUpdateEnd = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        const end = event.target.value
-
-        const datePart: string[] = end.split('-')
-        const year: number = Number(datePart[0])
-        const month: number = Number(datePart[1])-1
-        const day: number = Number(datePart[2])
-
-        const utcDate = Date.UTC(year, month, day)
-        props.handleUpdateTrip({...props.trip, endDate: utcDate})
+        props.handleUpdateTrip({...props.trip, endDate: toEpocSecondsFromDate(event.target.value)})
     }
 
     const handleNameChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -105,6 +90,8 @@ export function Trip(props: TripProps): React.ReactElement {
                     <MenuItem value={6}>Six</MenuItem>
                     <MenuItem value={7}>Seven</MenuItem>
                     <MenuItem value={8}>Eight</MenuItem>
+                    <MenuItem value={9}>Nine</MenuItem>
+                    <MenuItem value={10}>Ten</MenuItem>
                 </Select>
             </FormControl>
         </>

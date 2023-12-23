@@ -13,8 +13,16 @@ import {
 } from "react-router-dom";
 import Trips from "./Trips.tsx";
 import useAssetHook from "./hooks/useAssetHook.ts";
+import {isValidTrip} from "./hooks/HookUtils.ts";
 
 export const drawerWidth = 250;
+
+// TODO
+// [ ] Optimistic updates
+// [ ] Endless scroll
+// [ ] Search
+// [ ] Google maps
+// [ ] Backend API
 
 function App() {
     const [trip, setTrip] = useState<TripData>(EMPTY_TRIP)
@@ -23,11 +31,6 @@ function App() {
     const tripHook = useTripHook();
     const assetHook = useAssetHook();
     const navigate = useNavigate();
-
-
-    const isValidTrip = (trip: TripData): boolean => {
-        return !!trip.name && !!trip.startDate && !!trip.endDate && trip.numPeople > 0
-    }
 
     const handleUpdateTrip = (trip: TripData) => {
         setTrip(trip)
@@ -41,7 +44,7 @@ function App() {
 
         const reserved = {...asset, available: false};
         assetHook.update.mutate(reserved)
-        tripHook.createTrip.mutate({...trip, asset: reserved})
+        tripHook.createTripMutation.mutate({...trip, asset: reserved})
         setTrip(EMPTY_TRIP)
         navigate('/trips')
 
@@ -77,13 +80,15 @@ function App() {
                         <AssetList
                             isLoading={assetHook.results.isLoading}
                             assets={assetHook.results.data || []}
+                            isError={assetHook.results.isError}
+                            error={assetHook.results.error}
                             trip={trip} handleReserve={handleReserve}/>
                     }/>
                     <Route
                         key={'/trips/'}
                         path={'/trips/'}
                         element={<Trips trips={tripHook.tripsQuery.data || []}
-                                        isLoading={tripHook.createTrip.isPending || tripHook.tripsQuery.isLoading}/>}
+                                        isLoading={tripHook.createTripMutation.isPending || tripHook.tripsQuery.isLoading}/>}
                     />
                 </Routes>
             <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'center' }}

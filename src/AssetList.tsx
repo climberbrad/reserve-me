@@ -4,6 +4,8 @@ import {TripData} from "./Trip.tsx";
 
 interface AssetListProps {
     isLoading: boolean,
+    isError: boolean,
+    error: Error | null,
     trip: TripData,
     assets: AssetData[],
     handleReserve:(asset: AssetData) => void,
@@ -36,7 +38,7 @@ export default function AssetList(props: AssetListProps): React.ReactElement {
     }
 
     if (props.isLoading) return <Typography fontSize={54}>Loading...</Typography>
-    // if (isError) return <pre>{JSON.stringify(assetHook.results.error)}</pre>
+    if (props.isError) return <pre>{JSON.stringify(props.error)}</pre>
 
     return (
         <>
