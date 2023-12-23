@@ -1,4 +1,12 @@
-import {Button, Card, CardActions, CardContent, Typography} from "@mui/material";
+import {
+    Button,
+    Card,
+    CardActions,
+    CardContent,
+    CardHeader,
+    CardMedia,
+    Typography
+} from "@mui/material";
 import {formatDate} from "./hooks/HookUtils.ts";
 
 export interface AssetData {
@@ -10,6 +18,7 @@ export interface AssetData {
     quote: string;
     numSleeps: number;
     available: boolean;
+    image: string;
 }
 
 interface CardProps {
@@ -19,17 +28,18 @@ interface CardProps {
 
 export default function AssetCard(props: CardProps): React.ReactElement {
     return (
-        <Card variant='outlined' sx={{minWidth: 500, marginY: 2, background: '#ffffff'}}>
+        <Card sx={{width: 650, marginBottom: 4}}>
+            <CardHeader
+                title={props.asset.name}
+                subheader={`${formatDate(props.asset.startDate)} - ${formatDate(props.asset.endDate)}`}
+            />
+            <CardMedia
+                component="img"
+                height="194"
+                image={props.asset.image}
+                alt="Paella dish"
+            />
             <CardContent>
-                <Typography sx={{fontSize: 14}} color="text.secondary" gutterBottom>
-                    Available: {formatDate(props.asset.startDate)} - {formatDate(props.asset.endDate)}
-                </Typography>
-                <Typography color='#994d3d' variant="h5" component="div">
-                    {props.asset.name}
-                </Typography>
-                <Typography sx={{mb: 1.5}} color="text.secondary">
-                    sleeps {props.asset.numSleeps}
-                </Typography>
                 <Typography variant="body2">
                     {props.asset.location}
                     <br/>

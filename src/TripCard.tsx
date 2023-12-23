@@ -1,4 +1,4 @@
-import {Box, Card, CardActionArea, CardContent, CardMedia, Paper, Typography} from "@mui/material";
+import {Card, CardActionArea, CardContent, CardMedia, Typography} from "@mui/material";
 import {TripData} from "./Trip.tsx";
 import useAssetHook from "./hooks/useAssetHook.ts";
 import {formatDate} from "./hooks/HookUtils.ts";
@@ -12,12 +12,12 @@ export default function TripCard({trip}: { trip: TripData }): React.ReactElement
     const asset = assetHook.getAsset(trip.assetId).data
 
     return (
-        <Card sx={{ minWidth: 450 }}>
+        <Card sx={{ minWidth: 450, marginY: 4 }}>
             <CardActionArea>
                 <CardMedia
                     component="img"
                     height="140"
-                    image="https://st4.depositphotos.com/10440072/40457/i/450/depositphotos_404572958-stock-photo-perfect-beach-view-summer-holiday.jpg"
+                    image={asset?.image}
                     alt="beach"
                 />
                 <CardContent>

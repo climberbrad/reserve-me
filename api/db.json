@@ -8,7 +8,8 @@
       "location": "Austin, TX",
       "quote": "Oh give me a home...",
       "numSleeps": 100,
-      "available": true
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1600828576920-cb1528d7ac66?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dGV4YXMlMjByYW5jaHxlbnwwfHwwfHx8MA%3D%3D"
     },
     {
       "id": "710DCD0D-71A1-4F5A-9A2E-3FC659DE5636",
@@ -18,7 +19,8 @@
       "location": "Dallas, TX",
       "quote": "Moon river!",
       "numSleeps": 4,
-      "available": true
+      "available": true,
+      "image": "https://media.gettyimages.com/id/521356424/photo/gate-to-ranch.jpg?s=612x612&w=gi&k=20&c=Pi9WWEd_IHWQF8zQ68I_JaPr-KYCg4jdCM8RmzegYOQ="
     },
     {
       "id": "65727886-2B9A-478D-B011-9B3145BCEBE4",
@@ -28,7 +30,8 @@
       "location": "Austin, TX",
       "quote": "Home of the 10 gallon hat!",
       "numSleeps": 6,
-      "available": true
+      "available": true,
+      "image": "https://media.istockphoto.com/id/1341571978/photo/dramatic-landscape-with-an-abandoned-shack-on-the-prairie-with-a-beauty-all-around-it.jpg?s=612x612&w=0&k=20&c=PWEBeuMMWroYxI7g6U-119oU8o0byELuRWtjEJDrxKQ="
     },
     {
       "id": "FB9D7809-DF58-4675-ADB2-9C9A4DA055F8",
@@ -38,7 +41,8 @@
       "location": "Vail, CO",
       "quote": "Powder hungry",
       "numSleeps": 12,
-      "available": true
+      "available": true,
+      "image": "https://media.istockphoto.com/id/182702386/photo/ski-in-out.jpg?s=612x612&w=0&k=20&c=x8GxxSwhPYUlMWuzYcQItKobm3wP2Kjo7MFuI2TcNQM="
     },
     {
       "id": "2A4CAF9C-9DC3-43D0-A124-33B944A30F42",
@@ -48,7 +52,8 @@
       "location": "Steamboat Springs, CO",
       "quote": "Deep thoughts...",
       "numSleeps": 4,
-      "available": true
+      "available": true,
+      "image": "https://media.cntraveler.com/photos/5eb420d241269ff2d4f2ea8b/master/pass/Pamukkale-Denizli-Turkey-GettyImages-539479634.jpg"
     },
     {
       "id": "916C3052-97B3-41C4-94F8-32977435578B",
@@ -58,7 +63,8 @@
       "location": "Key West, FL",
       "quote": "Fun in the sun!",
       "numSleeps": 7,
-      "available": true
+      "available": true,
+      "image": "https://st4.depositphotos.com/10440072/40457/i/450/depositphotos_404572958-stock-photo-perfect-beach-view-summer-holiday.jpg"
     }
   ],
   "Trips": [
@@ -68,6 +74,14 @@
       "startDate": 1721048400,
       "endDate": 1721739600,
       "assetId": "916C3052-97B3-41C4-94F8-32977435578B"
+    },
+    {
+      "id": "c2598428-f353-42a9-a9e2-92acbb90a290",
+      "name": "Hot Tub GET-A-WAY",
+      "startDate": 1729321200,
+      "endDate": 1729494000,
+      "numPeople": 4,
+      "assetId": "2A4CAF9C-9DC3-43D0-A124-33B944A30F42"
     }
   ]
 }

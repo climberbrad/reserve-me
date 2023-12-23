@@ -42,7 +42,9 @@ function App() {
             return
         }
 
+        // TODO: block out dates for this trip while leaving others open for another booking
         const reserved = {...asset, available: false};
+
         assetHook.update.mutate(reserved)
         tripHook.create.mutate({...trip, assetId: reserved.id})
         setTrip(EMPTY_TRIP)
