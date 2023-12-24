@@ -11,11 +11,6 @@
           "tripId": "0f4d3574-747f-4a65-944f-7077db3c039b",
           "startDate": 1734332400,
           "endDate": 1734678000
-        },
-        {
-          "tripId": "83932816-5d57-463d-bc5d-61135d1e69ce",
-          "startDate": 1733036400,
-          "endDate": 1734246000
         }
       ],
       "image": "https://images.unsplash.com/photo-1600828576920-cb1528d7ac66?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dGV4YXMlMjByYW5jaHxlbnwwfHwwfHx8MA%3D%3D"
@@ -53,12 +48,7 @@
       "location": "Steamboat Springs, CO",
       "quote": "Deep thoughts...",
       "numSleeps": 4,
-      "bookings": [
-        {
-          "start": 1734764400,
-          "end": 1735369200
-        }
-      ],
+      "bookings": [],
       "image": "https://media.cntraveler.com/photos/5eb420d241269ff2d4f2ea8b/master/pass/Pamukkale-Denizli-Turkey-GettyImages-539479634.jpg"
     },
     {
@@ -69,6 +59,24 @@
       "numSleeps": 7,
       "bookings": [],
       "image": "https://st4.depositphotos.com/10440072/40457/i/450/depositphotos_404572958-stock-photo-perfect-beach-view-summer-holiday.jpg"
+    },
+    {
+      "id": "2474ED7C-57F6-43D3-BD6D-85E07392E9CD",
+      "name": "Napa Vineyard",
+      "location": "Napa Valley, CA",
+      "quote": "Wine and cheese lovers delight",
+      "numSleeps": 8,
+      "bookings": [],
+      "image": "https://living.qa.acg.aaa.com/content/dam/aaa-living/Travel/7-Things-to-Do-in-the-French-Countryside/03-182059250_1400x1050.jpg"
+    },
+    {
+      "id": "93019DAF-E0EE-438F-B90B-16C3A1B3CE9B",
+      "name": "South Carolina beach escape",
+      "location": "Hilton Head, SC",
+      "quote": "Endless Summer",
+      "numSleeps": 6,
+      "bookings": [],
+      "image": "https://i0.wp.com/garrisoncharleston.com/wp-content/uploads/2022/08/Best-Beach-Towns-South-Carolina.jpg?fit=800%2C533&ssl=1"
     }
   ],
   "Trips": [
@@ -78,14 +86,6 @@
       "startDate": 1734332400,
       "endDate": 1734678000,
       "numPeople": 4,
-      "assetId": "31C9A3EB-7B0B-4E2C-BA7B-103EFA07502C"
-    },
-    {
-      "id": "83932816-5d57-463d-bc5d-61135d1e69ce",
-      "name": "Texas Trip",
-      "startDate": 1733036400,
-      "endDate": 1734246000,
-      "numPeople": 7,
       "assetId": "31C9A3EB-7B0B-4E2C-BA7B-103EFA07502C"
     }
   ]

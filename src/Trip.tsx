@@ -24,46 +24,52 @@ export function Trip(props: TripProps): React.ReactElement {
     }
 
     const handleNameChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        props.handleUpdateTrip({...props.trip, name: event.target.value.trim()})
+        props.handleUpdateTrip({...props.trip, name: event.target.value})
     }
 
     return (
         <>
             <TextField
+                required
                 sx={{marginTop: 2, marginBottom: 8, marginLeft:1}}
-                id="standard-basic"
-                label={props.trip.name}
+                id="tripName"
+                label='Trip name'
                 placeholder='New trip'
+                defaultValue={props.trip.name}
                 variant="standard"
                 onChange={(e) => handleNameChange(e)}
             />
             <FormControl variant="standard" sx={{m: 1, minWidth: 120, color: '#70d1da'}}>
                 <TextField
+                    required
                     variant="standard"
                     sx={{color: '#70d1da'}}
-                    id="date"
+                    id="startDate"
                     label="Start"
                     type="date"
                     InputLabelProps={{
                         shrink: true,
                     }}
+                    defaultValue={props.trip.startDate || ''}
                     onChange={(e) => handleUpdateStart(e)}
                 />
             </FormControl>
             <FormControl variant="standard" sx={{m: 1, minWidth: 120, color: '#70d1da'}}>
                 <TextField
+                    required
                     variant="standard"
                     sx={{color: '#70d1da'}}
-                    id="date"
+                    id="endDate"
                     label="End"
                     type="date"
                     InputLabelProps={{
                         shrink: true,
                     }}
+                    defaultValue={props.trip.endDate || ''}
                     onChange={(e) => handleUpdateEnd(e)}
                 />
             </FormControl>
-            <FormControl variant="standard" sx={{m: 1, minWidth: 120}}>
+            <FormControl required variant="standard" sx={{m: 1, minWidth: 120}}>
                 <InputLabel id="trip-num-people-label">Guests</InputLabel>
                 <Select
                     labelId="trip-num-people-label"
