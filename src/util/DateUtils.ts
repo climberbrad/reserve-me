@@ -47,11 +47,11 @@ export function daysFromNow(epochSec: number): number {
 const isWindowAvailable = (window: Booking, trip: TripData) : boolean => {
     if(!trip.startDate || !trip.endDate) return true
 
-    return trip.startDate > window.end || trip.endDate < window.start;
+    return trip.startDate > window.endDate || trip.endDate < window.startDate;
 }
 
 export function isAvailable(trip: TripData, asset: AssetData): boolean {
     if(asset.bookings.length === 0) return true
 
-    return asset.bookings.some((window) => isWindowAvailable(window, trip))
+    return asset.bookings.some((booking) => isWindowAvailable(booking, trip))
 }

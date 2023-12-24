@@ -49,16 +49,24 @@ function App() {
             return
         }
 
-        const updatedBookings: Booking = {start: trip.startDate, end: trip.endDate}
-        const booking: AssetData = {...asset, bookings: [...asset.bookings, updatedBookings]};
+        // single transaction create
+        tripHook.create.mutateAsync({...trip, assetId: asset.id})
+            .then((result) => {
+                if (!result.id || !result.startDate || !result.endDate) {
+                    setTripError(true)
+                    return
+                }
 
-        console.log(booking)
+                const newBooking: Booking = {
+                    tripId: result.id, // new tripId
+                    startDate: result.startDate,
+                    endDate: result.endDate
+                }
 
-        // todo: one transaction
-        assetHook.update.mutate(booking)
-        tripHook.create.mutate({...trip, assetId: booking.id})
-        setTrip(EMPTY_TRIP)
-        navigate('/trips')
+                assetHook.update.mutate({...asset, bookings: [...asset.bookings, newBooking]})
+                setTrip(EMPTY_TRIP)
+                navigate('/trips')
+            })
     }
 
     const handleClose = (_: React.SyntheticEvent | Event, reason?: string) => {

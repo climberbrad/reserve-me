@@ -1,6 +1,7 @@
 export interface Booking {
-    start: number;
-    end: number;
+    tripId: string;
+    startDate: number;
+    endDate: number;
 }
 
 export interface AssetData {

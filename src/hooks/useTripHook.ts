@@ -19,10 +19,10 @@ export default function useTripHook(): tripHookResponse {
     const createTripMutation = useMutation({
         mutationFn: createTrip,
         onSuccess: data => {
-            queryClient.setQueryData(['trips', data.id], data)
-           void queryClient.invalidateQueries({ queryKey: ['trips'] })
+            queryClient.setQueryData(['trips', data.id], data) // optimistic update
+            void queryClient.invalidateQueries({queryKey: ['trips']})
         },
     })
 
-    return { results: tripsQuery, create: createTripMutation }
+    return {results: tripsQuery, create: createTripMutation}
 }
