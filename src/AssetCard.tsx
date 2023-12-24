@@ -7,19 +7,7 @@ import {
     CardMedia,
     Typography
 } from "@mui/material";
-import {formatDate} from "./hooks/HookUtils.ts";
-
-export interface AssetData {
-    id: string;
-    startDate: number;
-    endDate: number;
-    name: string;
-    location: string;
-    quote: string;
-    numSleeps: number;
-    available: boolean;
-    image: string;
-}
+import {AssetData} from "./Types.ts";
 
 interface CardProps {
     reserve: (asset: AssetData) => void;
@@ -31,7 +19,7 @@ export default function AssetCard(props: CardProps): React.ReactElement {
         <Card sx={{width: 650, marginBottom: 4}}>
             <CardHeader
                 title={props.asset.name}
-                subheader={`${formatDate(props.asset.startDate)} - ${formatDate(props.asset.endDate)}`}
+                // subheader={`${formatDate(props.asset.availability[0].start)} - ${formatDate(props.asset.availability[0].end)}`}
             />
             <CardMedia
                 component="img"
@@ -44,6 +32,12 @@ export default function AssetCard(props: CardProps): React.ReactElement {
                     {props.asset.location}
                     <br/>
                     "{props.asset.quote}"
+                </Typography>
+                <Typography variant="body2">
+                    Sleeps: {props.asset.numSleeps}
+                </Typography>
+                <Typography variant="body2">
+                    {/*available in: {daysFromNow(props.asset.availability[0].start)} days*/}
                 </Typography>
             </CardContent>
             <CardActions>

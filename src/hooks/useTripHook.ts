@@ -1,7 +1,7 @@
 import {useMutation, UseMutationResult, useQuery, useQueryClient, UseQueryResult} from "@tanstack/react-query";
-import {wait} from "./HookUtils.ts";
+import {wait} from "../util/DateUtils.ts";
 import {createTrip, getTrips} from "../Api.ts";
-import {TripData} from "../Trip.tsx";
+import {TripData} from "../Types.ts";
 
 interface tripHookResponse {
     results: UseQueryResult<TripData[]>,

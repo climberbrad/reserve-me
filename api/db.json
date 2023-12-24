@@ -2,86 +2,70 @@
   "assets": [
     {
       "id": "31C9A3EB-7B0B-4E2C-BA7B-103EFA07502C",
-      "startDate": 1731654000,
-      "endDate": 1732086000,
       "name": "Home on the Range",
       "location": "Austin, TX",
       "quote": "Oh give me a home...",
       "numSleeps": 100,
-      "available": true,
+      "bookings": [{
+        "start": 1734332400,
+        "end": 1734678000
+      }],
       "image": "https://images.unsplash.com/photo-1600828576920-cb1528d7ac66?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dGV4YXMlMjByYW5jaHxlbnwwfHwwfHx8MA%3D%3D"
     },
     {
       "id": "710DCD0D-71A1-4F5A-9A2E-3FC659DE5636",
-      "startDate": 1734246000,
-      "endDate": 1735628400,
       "name": "Deep in the Heart!",
       "location": "Dallas, TX",
       "quote": "Moon river!",
       "numSleeps": 4,
-      "available": true,
+      "bookings": [],
       "image": "https://media.gettyimages.com/id/521356424/photo/gate-to-ranch.jpg?s=612x612&w=gi&k=20&c=Pi9WWEd_IHWQF8zQ68I_JaPr-KYCg4jdCM8RmzegYOQ="
     },
     {
       "id": "65727886-2B9A-478D-B011-9B3145BCEBE4",
-      "startDate": 1733036400,
-      "endDate": 1735628400,
       "name": "Prairie Palace",
       "location": "Austin, TX",
       "quote": "Home of the 10 gallon hat!",
       "numSleeps": 6,
-      "available": true,
+      "bookings": [],
       "image": "https://media.istockphoto.com/id/1341571978/photo/dramatic-landscape-with-an-abandoned-shack-on-the-prairie-with-a-beauty-all-around-it.jpg?s=612x612&w=0&k=20&c=PWEBeuMMWroYxI7g6U-119oU8o0byELuRWtjEJDrxKQ="
     },
     {
       "id": "FB9D7809-DF58-4675-ADB2-9C9A4DA055F8",
-      "startDate": 1733036400,
-      "endDate": 1735628400,
       "name": "Ski Chalet",
       "location": "Vail, CO",
       "quote": "Powder hungry",
       "numSleeps": 12,
-      "available": true,
+      "bookings": [],
       "image": "https://media.istockphoto.com/id/182702386/photo/ski-in-out.jpg?s=612x612&w=0&k=20&c=x8GxxSwhPYUlMWuzYcQItKobm3wP2Kjo7MFuI2TcNQM="
     },
     {
       "id": "2A4CAF9C-9DC3-43D0-A124-33B944A30F42",
-      "startDate": 1727766000,
-      "endDate": 1735628400,
       "name": "Hot tub heaven",
       "location": "Steamboat Springs, CO",
       "quote": "Deep thoughts...",
       "numSleeps": 4,
-      "available": true,
+      "bookings": [],
       "image": "https://media.cntraveler.com/photos/5eb420d241269ff2d4f2ea8b/master/pass/Pamukkale-Denizli-Turkey-GettyImages-539479634.jpg"
     },
     {
       "id": "916C3052-97B3-41C4-94F8-32977435578B",
-      "startDate": 1717221600,
-      "endDate": 1725084000,
       "name": "Beach Bungalow",
       "location": "Key West, FL",
       "quote": "Fun in the sun!",
       "numSleeps": 7,
-      "available": true,
+      "bookings": [],
       "image": "https://st4.depositphotos.com/10440072/40457/i/450/depositphotos_404572958-stock-photo-perfect-beach-view-summer-holiday.jpg"
     }
   ],
   "Trips": [
     {
-      "id": "712F6C9C-52F5-4D6D-A549-76A5E2334EAA",
-      "name": "My birthday weekend",
-      "startDate": 1721048400,
-      "endDate": 1721739600,
-      "assetId": "916C3052-97B3-41C4-94F8-32977435578B"
-    },
-    {
-      "id": "c2598428-f353-42a9-a9e2-92acbb90a290",
-      "name": "Hot Tub GET-A-WAY",
-      "startDate": 1729321200,
-      "endDate": 1729494000,
+      "id": "0f4d3574-747f-4a65-944f-7077db3c039b",
+      "name": "My Birthday",
+      "startDate": 1734332400,
+      "endDate": 1734678000,
       "numPeople": 4,
-      "assetId": "2A4CAF9C-9DC3-43D0-A124-33B944A30F42"
+      "assetId": "31C9A3EB-7B0B-4E2C-BA7B-103EFA07502C"
     }
   ]
 }

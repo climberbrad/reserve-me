@@ -1,12 +1,11 @@
-import {sampleAssets} from "../SampleData.ts";
-import {AssetData} from "../AssetCard.tsx";
 import {useMutation, UseMutationResult, useQuery, useQueryClient, UseQueryResult} from "@tanstack/react-query";
-import {wait} from "./HookUtils.ts";
-import {getAsset, getAssets} from "../Api.ts";
+import {wait} from "../util/DateUtils.ts";
+import {getAsset, getAssets, updateAsset} from "../Api.ts";
+import {AssetData} from "../Types.ts";
 
 interface assetHookResponse {
     results: UseQueryResult<AssetData[]>,
-    update: UseMutationResult<void, Error, AssetData, unknown>,
+    update: UseMutationResult<AssetData, Error, AssetData, unknown>,
     getAsset: (id: string) => UseQueryResult<AssetData, Error>,
 }
 
@@ -23,15 +22,12 @@ export default function useAssetHook(): assetHookResponse {
         queryFn: () => getAsset(id),
     })
 
-    const updateAsset = useMutation({
-        mutationFn: (asset: AssetData) => wait(1000).then(() => {
-            const index: number = sampleAssets.findIndex((el) => el.id === asset.id)
-            sampleAssets[index] = asset;
-        }),
+    const updateAssetMutation = useMutation({
+        mutationFn: (asset: AssetData) => wait(1000).then(() => updateAsset(asset)),
         onSuccess: () => {
             void queryClient.invalidateQueries({queryKey: ['assets']})
         },
     })
 
-    return {results: assetQuery, update: updateAsset, getAsset: getAssetQuery}
+    return {results: assetQuery, update: updateAssetMutation, getAsset: getAssetQuery}
 }

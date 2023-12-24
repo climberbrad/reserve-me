@@ -1,6 +1,5 @@
 import axios from "axios";
-import {TripData} from "./Trip.tsx";
-import {AssetData} from "./AssetCard.tsx";
+import {AssetData, TripData} from "./Types.ts";
 
 export async function getAssets(): Promise<AssetData[]> {
     const res = await axios
@@ -10,6 +9,14 @@ export async function getAssets(): Promise<AssetData[]> {
 
 export function getAsset(id: string): Promise<AssetData> {
     return axios.get(`http://localhost:3000/assets/${id}`).then(res => res.data)
+}
+
+export async function updateAsset(asset: AssetData): Promise<AssetData> {
+    const res = await axios
+        .post(`http://localhost:3000/assets/${asset.id}`, {
+            ...asset,
+        });
+    return res.data;
 }
 
 export async function getTrips(): Promise<TripData[]> {

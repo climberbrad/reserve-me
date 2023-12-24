@@ -1,15 +1,7 @@
 import {FormControl, InputLabel, MenuItem, Select, TextField} from "@mui/material";
 import {SelectChangeEvent} from "@mui/material";
-import {toEpocSecondsFromDate} from "./hooks/HookUtils.ts";
-
-export interface TripData {
-    id: string | undefined;
-    name: string | undefined;
-    startDate: number | undefined;
-    endDate: number | undefined;
-    numPeople: number;
-    assetId: string | undefined;
-}
+import {toEpocSecondsFromDate} from "./util/DateUtils.ts";
+import {TripData} from "./Types.ts";
 
 interface TripProps {
     handleUpdateTrip: (trip: TripData) => void;

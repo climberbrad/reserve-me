@@ -1,7 +1,7 @@
 import {Card, CardActionArea, CardContent, CardMedia, Typography} from "@mui/material";
-import {TripData} from "./Trip.tsx";
 import useAssetHook from "./hooks/useAssetHook.ts";
-import {formatDate} from "./hooks/HookUtils.ts";
+import {formatDate} from "./util/DateUtils.ts";
+import {TripData} from "./Types.ts";
 
 export default function TripCard({trip}: { trip: TripData }): React.ReactElement {
     if (!trip || !trip.id || !trip.assetId || !trip.startDate || !trip.endDate) {
@@ -12,7 +12,7 @@ export default function TripCard({trip}: { trip: TripData }): React.ReactElement
     const asset = assetHook.getAsset(trip.assetId).data
 
     return (
-        <Card sx={{ minWidth: 450, marginY: 4 }}>
+        <Card sx={{ minWidth: 650, marginY: 4 }}>
             <CardActionArea>
                 <CardMedia
                     component="img"
