@@ -6,10 +6,16 @@
       "location": "Austin, TX",
       "quote": "Oh give me a home...",
       "numSleeps": 100,
-      "bookings": [{
-        "start": 1734332400,
-        "end": 1734678000
-      }],
+      "bookings": [
+        {
+          "start": 1734332400,
+          "end": 1734678000
+        },
+        {
+          "start": 1733036400,
+          "end": 1734246000
+        }
+      ],
       "image": "https://images.unsplash.com/photo-1600828576920-cb1528d7ac66?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dGV4YXMlMjByYW5jaHxlbnwwfHwwfHx8MA%3D%3D"
     },
     {
@@ -64,6 +70,14 @@
       "name": "My Birthday",
       "startDate": 1734332400,
       "endDate": 1734678000,
+      "numPeople": 4,
+      "assetId": "31C9A3EB-7B0B-4E2C-BA7B-103EFA07502C"
+    },
+    {
+      "id": "8132e19b-e728-4895-8a24-4528d6db396d",
+      "name": "Another TX Vaca",
+      "startDate": 1733036400,
+      "endDate": 1734246000,
       "numPeople": 4,
       "assetId": "31C9A3EB-7B0B-4E2C-BA7B-103EFA07502C"
     }

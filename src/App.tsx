@@ -11,8 +11,7 @@ import {
 } from "react-router-dom";
 import Trips from "./Trips.tsx";
 import useAssetHook from "./hooks/useAssetHook.ts";
-import {isValidTrip} from "./util/DateUtils.ts";
-import {AssetData, TripData} from "./Types.ts";
+import {AssetData, Booking, TripData} from "./Types.ts";
 
 export const drawerWidth = 250;
 
@@ -21,7 +20,7 @@ export const drawerWidth = 250;
 // [ ] Endless scroll
 // [ ] Search
 // [ ] Google maps
-// [ ] Backend API
+// [x] Backend API
 
 const EMPTY_TRIP: TripData = {
     id: undefined,
@@ -45,16 +44,19 @@ function App() {
     }
 
     const handleReserve = (asset: AssetData): void => {
-        if (!isValidTrip(trip)) {
+        if (!trip.name || !trip.startDate || !trip.endDate || trip.numPeople === 0) {
             setTripError(true)
             return
         }
 
-        // TODO: block out dates for this trip while leaving others open for another booking
-        const reserved = {...asset};
+        const updatedBookings: Booking = {start: trip.startDate, end: trip.endDate}
+        const booking: AssetData = {...asset, bookings: [...asset.bookings, updatedBookings]};
 
-        assetHook.update.mutate(reserved)
-        tripHook.create.mutate({...trip, assetId: reserved.id})
+        console.log(booking)
+
+        // todo: one transaction
+        assetHook.update.mutate(booking)
+        tripHook.create.mutate({...trip, assetId: booking.id})
         setTrip(EMPTY_TRIP)
         navigate('/trips')
     }

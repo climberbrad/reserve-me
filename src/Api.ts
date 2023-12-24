@@ -13,7 +13,7 @@ export function getAsset(id: string): Promise<AssetData> {
 
 export async function updateAsset(asset: AssetData): Promise<AssetData> {
     const res = await axios
-        .post(`http://localhost:3000/assets/${asset.id}`, {
+        .put(`http://localhost:3000/assets/${asset.id}`, {
             ...asset,
         });
     return res.data;
