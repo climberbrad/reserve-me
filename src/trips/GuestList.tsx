@@ -8,10 +8,6 @@ interface GuestListProps {
 }
 
 export default function GuestList(props: GuestListProps): React.ReactElement {
-    // if (props.guestList.length === 0) {
-    //     props.addOrUpdate({id: crypto.randomUUID(), firstName: '', lastName: ''})
-    //     return <></>
-    // }
 
     return (<>
         {props.guestList.map((guest, index) =>

@@ -12,7 +12,7 @@ import {Link} from "react-router-dom";
 export default function AssetCard(asset: AssetData): React.ReactElement {
     return (
         <Link to={`/asset-detail/${asset.id}`}>
-            <Card sx={{width: 650, marginBottom: 4}}>
+            <Card sx={{width: 650, marginBottom: 4, background: '#f8f9fc'}}>
                 <CardHeader
                     title={asset.name}
                     // subheader={`${formatDate(asset.availability[0].start)} - ${formatDate(asset.availability[0].end)}`}
