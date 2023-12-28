@@ -6,13 +6,7 @@
       "location": "Austin, TX",
       "quote": "Oh give me a home...",
       "numSleeps": 100,
-      "bookings": [
-        {
-          "tripId": "0f4d3574-747f-4a65-944f-7077db3c039b",
-          "startDate": 1734332400,
-          "endDate": 1734678000
-        }
-      ],
+      "bookings": [],
       "image": "https://images.unsplash.com/photo-1600828576920-cb1528d7ac66?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dGV4YXMlMjByYW5jaHxlbnwwfHwwfHx8MA%3D%3D"
     },
     {
@@ -48,7 +42,13 @@
       "location": "Steamboat Springs, CO",
       "quote": "Deep thoughts...",
       "numSleeps": 4,
-      "bookings": [],
+      "bookings": [
+        {
+          "tripId": "2b0cd80d-64c4-4bcf-83e2-4f490598492a",
+          "startDate": 1704178800,
+          "endDate": 1704438000
+        }
+      ],
       "image": "https://media.cntraveler.com/photos/5eb420d241269ff2d4f2ea8b/master/pass/Pamukkale-Denizli-Turkey-GettyImages-539479634.jpg"
     },
     {
@@ -81,12 +81,17 @@
   ],
   "Trips": [
     {
-      "id": "0f4d3574-747f-4a65-944f-7077db3c039b",
-      "name": "My Birthday",
-      "startDate": 1734332400,
-      "endDate": 1734678000,
-      "numPeople": 4,
-      "assetId": "31C9A3EB-7B0B-4E2C-BA7B-103EFA07502C"
+      "id": "2b0cd80d-64c4-4bcf-83e2-4f490598492a",
+      "startDate": 1704178800,
+      "endDate": 1704438000,
+      "guests": [
+        {
+          "id": "1a5fbd9d-7043-40fc-84de-28380227012d",
+          "firstName": "Brad",
+          "lastName": "Jordan"
+        }
+      ],
+      "assetId": "2A4CAF9C-9DC3-43D0-A124-33B944A30F42"
     }
   ]
 }

@@ -1,17 +1,19 @@
 import {ReactElement} from "react";
 import {Typography} from "@mui/material";
 import TripCard from "./TripCard.tsx";
-import {TripData} from "./Types.ts";
+import {TripData} from "../Types.ts";
 
 interface TripsProps {
     isLoading: boolean,
+    isError: boolean,
+    error: Error | null,
     trips: TripData[],
 }
 
 export default function Trips(props: TripsProps): ReactElement {
 
     if (props.isLoading) return <Typography fontSize={54}>Loading...</Typography>
-    // if (tripHook.tripsQuery.isError) return <pre>{JSON.stringify(tripHook.tripsQuery.error)}</pre>
+    if (props.isError) return <pre>{JSON.stringify(props.error)}</pre>
 
     return (
         <>

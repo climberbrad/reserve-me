@@ -1,44 +1,48 @@
-import {FormControl, InputLabel, MenuItem, Select, TextField} from "@mui/material";
+import {Box, Drawer, FormControl, InputLabel, MenuItem, Select, TextField, Typography} from "@mui/material";
 import {SelectChangeEvent} from "@mui/material";
-import {toEpocSecondsFromDate} from "./util/DateUtils.ts";
-import {TripData} from "./Types.ts";
+import {toEpocSecondsFromDate} from "../util/DateUtils.ts";
+import {AssetFilter} from "../Types.ts";
+import {AltRoute} from "@mui/icons-material";
+import {drawerWidth} from "../App.tsx";
 
-interface TripProps {
-    handleUpdateTrip: (trip: TripData) => void;
-    trip: TripData;
+interface SidebarProps {
+    handleFilter: (filter: AssetFilter) => void;
+    filter: AssetFilter;
 }
 
-export function Trip(props: TripProps): React.ReactElement {
+export function Sidebar(props: SidebarProps): React.ReactElement {
 
     const handleUpdateGuests = (event: SelectChangeEvent<number>) => {
         const guests = event.target.value;
-        props.handleUpdateTrip({...props.trip, numPeople: !guests ? 0 : guests as number})
+        props.handleFilter({...props.filter, numPeople: !guests ? 0 : guests as number})
     }
 
     const handleUpdateStart = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        props.handleUpdateTrip({...props.trip, startDate: toEpocSecondsFromDate(event.target.value)})
+        props.handleFilter({...props.filter, startDate: toEpocSecondsFromDate(event.target.value)})
     }
 
     const handleUpdateEnd = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        props.handleUpdateTrip({...props.trip, endDate: toEpocSecondsFromDate(event.target.value)})
-    }
-
-    const handleNameChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        props.handleUpdateTrip({...props.trip, name: event.target.value})
+        props.handleFilter({...props.filter, endDate: toEpocSecondsFromDate(event.target.value)})
     }
 
     return (
-        <>
-            <TextField
-                required
-                sx={{marginTop: 2, marginBottom: 8, marginLeft:1}}
-                id="tripName"
-                label='Trip name'
-                placeholder='New trip'
-                defaultValue={props.trip.name}
-                variant="standard"
-                onChange={(e) => handleNameChange(e)}
-            />
+        <Drawer
+            sx={{
+                width: drawerWidth,
+                flexShrink: 0,
+                '& .MuiDrawer-paper': {
+                    width: drawerWidth,
+                    boxSizing: 'border-box',
+                },
+            }}
+            variant="permanent"
+            anchor="left"
+        >
+            <Box sx={{display: 'flex'}}>
+                <AltRoute sx={{color: '#2072f7', width: 52, height: 52}}/>
+                <Typography sx={{paddingTop: 2.5, marginBottom: 8}} fontSize={16} fontFamily='sans-serif'>Find your next
+                    adventure</Typography>
+            </Box>
             <FormControl variant="standard" sx={{m: 1, minWidth: 120, color: '#70d1da'}}>
                 <TextField
                     required
@@ -50,7 +54,7 @@ export function Trip(props: TripProps): React.ReactElement {
                     InputLabelProps={{
                         shrink: true,
                     }}
-                    defaultValue={props.trip.startDate || ''}
+                    defaultValue={props.filter.startDate}
                     onChange={(e) => handleUpdateStart(e)}
                 />
             </FormControl>
@@ -65,7 +69,7 @@ export function Trip(props: TripProps): React.ReactElement {
                     InputLabelProps={{
                         shrink: true,
                     }}
-                    defaultValue={props.trip.endDate || ''}
+                    defaultValue={props.filter.endDate}
                     onChange={(e) => handleUpdateEnd(e)}
                 />
             </FormControl>
@@ -74,7 +78,7 @@ export function Trip(props: TripProps): React.ReactElement {
                 <Select
                     labelId="trip-num-people-label"
                     id="trip-num-people-select"
-                    value={props.trip.numPeople}
+                    value={props.filter.numPeople}
                     onChange={(e) => handleUpdateGuests(e)}
                     label="Guests"
                 >
@@ -91,6 +95,6 @@ export function Trip(props: TripProps): React.ReactElement {
                     <MenuItem value={10}>Ten</MenuItem>
                 </Select>
             </FormControl>
-        </>
+        </Drawer>
     )
 }

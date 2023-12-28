@@ -1,7 +1,7 @@
 import {Card, CardActionArea, CardContent, CardMedia, Typography} from "@mui/material";
-import useAssetHook from "./hooks/useAssetHook.ts";
-import {formatDate} from "./util/DateUtils.ts";
-import {TripData} from "./Types.ts";
+import useAssetHook from "../hooks/useAssetHook.ts";
+import {formatDate} from "../util/DateUtils.ts";
+import {TripData} from "../Types.ts";
 
 export default function TripCard({trip}: { trip: TripData }): React.ReactElement {
     if (!trip || !trip.id || !trip.assetId || !trip.startDate || !trip.endDate) {
@@ -21,9 +21,6 @@ export default function TripCard({trip}: { trip: TripData }): React.ReactElement
                     alt="beach"
                 />
                 <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                        {trip.name}
-                    </Typography>
                     <Typography variant="body2" color="text.secondary">
                         {formatDate(trip.startDate)} - {formatDate(trip.endDate)}
                     </Typography>

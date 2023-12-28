@@ -1,4 +1,4 @@
-import {AssetData, Booking, TripData} from "../Types.ts";
+import {AssetData, AssetFilter, Booking, TripData} from "../Types.ts";
 
 export function wait(duration: number) {
     return new Promise(resolve => setTimeout(resolve, duration))
@@ -6,10 +6,6 @@ export function wait(duration: number) {
 
 export const formatDate = (utc: number): string => {
     return new Date(utc * 1000).toDateString()
-}
-
-export const isValidTrip = (trip: TripData): boolean => {
-    return !!trip.name && !!trip.startDate && !!trip.endDate && trip.numPeople > 0
 }
 
 export function toEpocSecondsFromDate(hyphenDelimitedDate: string): number {
@@ -43,15 +39,18 @@ export function daysFromNow(epochSec: number): number {
     return daysBetween(nowOffset, epochSec)
 }
 
+const isTripOverlappingBooking = (window: Booking, filter: AssetFilter) : boolean => {
+    if(!filter.startDate || !filter.endDate) return true
 
-const isTripOverlappingBooking = (window: Booking, trip: TripData) : boolean => {
-    if(!trip.startDate || !trip.endDate) return true
-
-    return trip.startDate > window.endDate || trip.endDate < window.startDate;
+    return filter.startDate > window.endDate || filter.endDate < window.startDate;
 }
 
-export function isAvailable(trip: TripData, asset: AssetData): boolean {
+export function isAvailable(filter: AssetFilter, asset: AssetData): boolean {
     if(asset.bookings.length === 0) return true
 
-    return asset.bookings.every((booking) => isTripOverlappingBooking(booking, trip))
+    return asset.bookings.every((booking) => isTripOverlappingBooking(booking, filter))
+}
+
+export const isValidTrip = (trip: TripData): boolean => {
+    return !!trip.endDate && !!trip.startDate && trip.guests.length > 0
 }

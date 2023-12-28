@@ -4,6 +4,12 @@ export interface Booking {
     endDate: number;
 }
 
+export interface Guest {
+    id: string | undefined;
+    firstName: string | undefined;
+    lastName: string | undefined;
+}
+
 export interface AssetData {
     id: string;
     name: string;
@@ -16,9 +22,28 @@ export interface AssetData {
 
 export interface TripData {
     id: string | undefined;
-    name: string | undefined;
+    startDate: number | undefined;
+    endDate: number | undefined;
+    guests: Guest[];
+    assetId: string | undefined;
+}
+
+export interface AssetFilter {
     startDate: number | undefined;
     endDate: number | undefined;
     numPeople: number;
-    assetId: string | undefined;
+}
+
+export const EMPTY_ASSET_FILTER = {
+    startDate: undefined,
+    endDate: undefined,
+    numPeople: 0,
+}
+
+export const EMPTY_TRIP: TripData = {
+    id: undefined,
+    startDate: undefined,
+    endDate: undefined,
+    guests: [],
+    assetId: undefined,
 }

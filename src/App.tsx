@@ -1,17 +1,18 @@
 import './App.css'
-import {Trip} from "./Trip.tsx";
+import {Sidebar} from "./trips/Sidebar.tsx";
 import {useState} from "react";
-import {Alert, Drawer, Snackbar} from "@mui/material";
-import AssetList from "./AssetList.tsx";
+import {Alert, Snackbar} from "@mui/material";
+import AssetList from "./assets/AssetList.tsx";
 import useTripHook from "./hooks/useTripHook.ts";
 import HeaderBar from "./HeaderBar.tsx";
 import {
     Route,
-    Routes, useNavigate
+    Routes
 } from "react-router-dom";
-import Trips from "./Trips.tsx";
+import Trips from "./trips/Trips.tsx";
 import useAssetHook from "./hooks/useAssetHook.ts";
-import {AssetData, Booking, TripData} from "./Types.ts";
+import {AssetFilter, EMPTY_ASSET_FILTER} from "./Types.ts";
+import AssetDetail from "./assets/AssetDetail.tsx";
 
 export const drawerWidth = 250;
 
@@ -21,53 +22,15 @@ export const drawerWidth = 250;
 // [ ] Search
 // [ ] Google maps
 // [x] Backend API
-
-const EMPTY_TRIP: TripData = {
-    id: undefined,
-    name: undefined,
-    startDate: undefined,
-    endDate: undefined,
-    numPeople: 0,
-    assetId: undefined,
-}
+// [ ] test API errors
+// [ ] rename API to server
 
 function App() {
-    const [trip, setTrip] = useState<TripData>(EMPTY_TRIP)
+    const [filter, setFilter] = useState<AssetFilter>(EMPTY_ASSET_FILTER)
     const [tripError, setTripError] = useState<boolean>(false)
 
     const tripHook = useTripHook();
     const assetHook = useAssetHook();
-    const navigate = useNavigate();
-
-    const handleUpdateTrip = (trip: TripData) => {
-        setTrip(trip)
-    }
-
-    const handleReserve = (asset: AssetData): void => {
-        if (!trip.name || !trip.startDate || !trip.endDate || trip.numPeople === 0) {
-            setTripError(true)
-            return
-        }
-
-        // single transaction create
-        tripHook.create.mutateAsync({...trip, assetId: asset.id})
-            .then((result) => {
-                if (!result.id || !result.startDate || !result.endDate) {
-                    setTripError(true)
-                    return
-                }
-
-                const newBooking: Booking = {
-                    tripId: result.id, // new tripId
-                    startDate: result.startDate,
-                    endDate: result.endDate
-                }
-
-                assetHook.update.mutate({...asset, bookings: [...asset.bookings, newBooking]})
-                setTrip(EMPTY_TRIP)
-                navigate('/trips')
-            })
-    }
 
     const handleClose = (_: React.SyntheticEvent | Event, reason?: string) => {
         if (reason === 'clickaway') {
@@ -79,20 +42,7 @@ function App() {
     return (
         <>
             <HeaderBar/>
-            <Drawer
-                sx={{
-                    width: drawerWidth,
-                    flexShrink: 0,
-                    '& .MuiDrawer-paper': {
-                        width: drawerWidth,
-                        boxSizing: 'border-box',
-                    },
-                }}
-                variant="permanent"
-                anchor="left"
-            >
-                <Trip trip={trip} handleUpdateTrip={handleUpdateTrip}/>
-            </Drawer>
+            <Sidebar filter={filter} handleFilter={setFilter}/>
             <Routes>
                 <Route path="*"
                        element={
@@ -101,13 +51,23 @@ function App() {
                                assets={assetHook.results.data || []}
                                isError={assetHook.results.isError}
                                error={assetHook.results.error}
-                               trip={trip} handleReserve={handleReserve}/>
+                               filter={filter}/>
                        }/>
                 <Route
                     key={'/trips/'}
                     path={'/trips/'}
-                    element={<Trips trips={tripHook.results.data || []}
-                                    isLoading={tripHook.create.isPending || tripHook.results.isLoading}/>}
+                    element={
+                        <Trips
+                            trips={tripHook.results.data || []}
+                            isLoading={tripHook.create.isPending || tripHook.results.isLoading}
+                            isError={tripHook.create.isError}
+                            error={tripHook.create.error}
+                        />
+                    }
+                />
+                <Route key={'/asset-detail'}
+                       path={'/asset-detail/:id'}
+                       element={<AssetDetail/>}
                 />
             </Routes>
             <Snackbar anchorOrigin={{vertical: 'top', horizontal: 'center'}}

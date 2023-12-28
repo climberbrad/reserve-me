@@ -31,6 +31,7 @@ export default function HeaderBar(): React.ReactElement {
                 position="fixed"
                 sx={{width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px`}}
             >
+            {/*    <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>*/}
                 <Box sx={{display: 'flex', justifyContent: 'space-between', marginRight: 2}}>
                     <Toolbar>
                         <Link key='home' to='/'>
