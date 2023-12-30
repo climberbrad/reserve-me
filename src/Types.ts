@@ -18,6 +18,8 @@ export interface AssetData {
     numSleeps: number;
     image: string;
     bookings: Booking[];
+    reviews: number;
+    stars: number;
 }
 
 export interface TripData {

@@ -17,7 +17,6 @@ import useTripHook from "../hooks/useTripHook.ts";
 import {isValidTrip, toEpocSecondsFromDate} from "../util/DateUtils.ts";
 import GuestList from "../trips/GuestList.tsx";
 
-// TODO: limit numPeople select to asset.numPeople
 export default function AssetDetail(): React.ReactElement {
     const tripHook = useTripHook();
     const assetHook = useAssetHook();
@@ -100,8 +99,8 @@ export default function AssetDetail(): React.ReactElement {
         <Box
             sx={{display: 'flex', justifyContent: 'space-between', border: 1, borderRadius: 2, borderColor: '#c2baba', marginY: 2, padding: 1}}>
             <Box>
-                <Rating name="read-only" value={Math.floor(Math.random() * 5) + 1} readOnly/>
-                <Typography color='black' component="legend">{Math.floor(Math.random() * 1000)} Reviews</Typography>
+                <Rating name="rating" value={data?.stars} readOnly/>
+                <Typography color='black' component="legend">{data?.reviews} Reviews</Typography>
             </Box>
             <Box sx={{marginX: 2, display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
                 <Typography color='black' fontFamily='fantasy' component="legend">One of my favorite places to

@@ -7,7 +7,9 @@
       "quote": "Oh give me a home...",
       "numSleeps": 100,
       "bookings": [],
-      "image": "https://images.unsplash.com/photo-1600828576920-cb1528d7ac66?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dGV4YXMlMjByYW5jaHxlbnwwfHwwfHx8MA%3D%3D"
+      "image": "https://images.unsplash.com/photo-1600828576920-cb1528d7ac66?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dGV4YXMlMjByYW5jaHxlbnwwfHwwfHx8MA%3D%3D",
+      "reviews": 45,
+      "stars": 4
     },
     {
       "id": "710DCD0D-71A1-4F5A-9A2E-3FC659DE5636",
@@ -16,7 +18,9 @@
       "quote": "Moon river!",
       "numSleeps": 4,
       "bookings": [],
-      "image": "https://media.gettyimages.com/id/521356424/photo/gate-to-ranch.jpg?s=612x612&w=gi&k=20&c=Pi9WWEd_IHWQF8zQ68I_JaPr-KYCg4jdCM8RmzegYOQ="
+      "image": "https://media.gettyimages.com/id/521356424/photo/gate-to-ranch.jpg?s=612x612&w=gi&k=20&c=Pi9WWEd_IHWQF8zQ68I_JaPr-KYCg4jdCM8RmzegYOQ=",
+      "reviews": 745,
+      "stars": 3
     },
     {
       "id": "65727886-2B9A-478D-B011-9B3145BCEBE4",
@@ -25,7 +29,9 @@
       "quote": "Home of the 10 gallon hat!",
       "numSleeps": 6,
       "bookings": [],
-      "image": "https://media.istockphoto.com/id/1341571978/photo/dramatic-landscape-with-an-abandoned-shack-on-the-prairie-with-a-beauty-all-around-it.jpg?s=612x612&w=0&k=20&c=PWEBeuMMWroYxI7g6U-119oU8o0byELuRWtjEJDrxKQ="
+      "image": "https://media.istockphoto.com/id/1341571978/photo/dramatic-landscape-with-an-abandoned-shack-on-the-prairie-with-a-beauty-all-around-it.jpg?s=612x612&w=0&k=20&c=PWEBeuMMWroYxI7g6U-119oU8o0byELuRWtjEJDrxKQ=",
+      "reviews": 6,
+      "stars": 2
     },
     {
       "id": "FB9D7809-DF58-4675-ADB2-9C9A4DA055F8",
@@ -40,7 +46,9 @@
           "endDate": 1704438000
         }
       ],
-      "image": "https://media.istockphoto.com/id/182702386/photo/ski-in-out.jpg?s=612x612&w=0&k=20&c=x8GxxSwhPYUlMWuzYcQItKobm3wP2Kjo7MFuI2TcNQM="
+      "image": "https://media.istockphoto.com/id/182702386/photo/ski-in-out.jpg?s=612x612&w=0&k=20&c=x8GxxSwhPYUlMWuzYcQItKobm3wP2Kjo7MFuI2TcNQM=",
+      "reviews": 4690,
+      "stars": 5
     },
     {
       "id": "2A4CAF9C-9DC3-43D0-A124-33B944A30F42",
@@ -55,7 +63,9 @@
           "endDate": 1704438000
         }
       ],
-      "image": "https://media.cntraveler.com/photos/5eb420d241269ff2d4f2ea8b/master/pass/Pamukkale-Denizli-Turkey-GettyImages-539479634.jpg"
+      "image": "https://media.cntraveler.com/photos/5eb420d241269ff2d4f2ea8b/master/pass/Pamukkale-Denizli-Turkey-GettyImages-539479634.jpg",
+      "reviews": 854,
+      "stars": 4
     },
     {
       "id": "916C3052-97B3-41C4-94F8-32977435578B",
@@ -64,7 +74,9 @@
       "quote": "Fun in the sun!",
       "numSleeps": 7,
       "bookings": [],
-      "image": "https://st4.depositphotos.com/10440072/40457/i/450/depositphotos_404572958-stock-photo-perfect-beach-view-summer-holiday.jpg"
+      "image": "https://st4.depositphotos.com/10440072/40457/i/450/depositphotos_404572958-stock-photo-perfect-beach-view-summer-holiday.jpg",
+      "reviews": 176,
+      "stars": 4
     },
     {
       "id": "2474ED7C-57F6-43D3-BD6D-85E07392E9CD",
@@ -79,7 +91,9 @@
           "endDate": 1704438000
         }
       ],
-      "image": "https://living.qa.acg.aaa.com/content/dam/aaa-living/Travel/7-Things-to-Do-in-the-French-Countryside/03-182059250_1400x1050.jpg"
+      "image": "https://living.qa.acg.aaa.com/content/dam/aaa-living/Travel/7-Things-to-Do-in-the-French-Countryside/03-182059250_1400x1050.jpg",
+      "reviews": 44,
+      "stars": 2
     },
     {
       "id": "93019DAF-E0EE-438F-B90B-16C3A1B3CE9B",
@@ -87,8 +101,49 @@
       "location": "Hilton Head, SC",
       "quote": "Endless Summer",
       "numSleeps": 6,
+      "bookings": [
+        {
+          "tripId": "fa00fb62-b389-4b47-b165-2d0f9d29b99a",
+          "startDate": 1704178800,
+          "endDate": 1704438000
+        }
+      ],
+      "image": "https://i0.wp.com/garrisoncharleston.com/wp-content/uploads/2022/08/Best-Beach-Towns-South-Carolina.jpg?fit=800%2C533&ssl=1",
+      "reviews": 3745,
+      "stars": 5
+    },
+    {
+      "id": "31654A7C-B1EA-47DD-9E23-C5CD22B23796",
+      "name": "Offgrid lake house",
+      "location": "Brownsville, KY",
+      "quote": "You're all alone now",
+      "numSleeps": 1,
       "bookings": [],
-      "image": "https://i0.wp.com/garrisoncharleston.com/wp-content/uploads/2022/08/Best-Beach-Towns-South-Carolina.jpg?fit=800%2C533&ssl=1"
+      "image": "https://inhabitat.com/wp-content/blogs.dir/1/files/2014/04/Pump-House-by-Branch-Studio-Architects-1.jpg",
+      "reviews": 1,
+      "stars": 3
+    },
+    {
+      "id": "B8435CD9-8426-4D1C-BA99-AEE5A3704219",
+      "name": "The shed",
+      "location": "Hicksville, MO",
+      "quote": "Life is simple",
+      "numSleeps": 1,
+      "bookings": [],
+      "reviews": 1,
+      "image": "https://media.nbcchicago.com/2023/02/IMG_9560.jpg?quality=85&strip=all&resize=1200%2C675",
+      "stars": 4
+    },
+    {
+      "id": "3CE9C298-BD63-406B-9BCA-693D1B9FCDBC",
+      "name": "Hobbit hole",
+      "location": "Sherwood Forest, ME",
+      "quote": "Me lucky charms!",
+      "numSleeps": 0.5,
+      "bookings": [],
+      "reviews": 4,
+      "image": "https://www.joshandersonrealestate.com/admin/wp-content/uploads/2020/08/Screen-Shot-2020-08-17-at-11.07.44-AM.png",
+      "stars": 1
     }
   ],
   "Trips": [
@@ -165,6 +220,24 @@
         }
       ],
       "assetId": "2474ED7C-57F6-43D3-BD6D-85E07392E9CD"
+    },
+    {
+      "id": "fa00fb62-b389-4b47-b165-2d0f9d29b99a",
+      "startDate": 1704178800,
+      "endDate": 1704438000,
+      "guests": [
+        {
+          "id": "91b3ffe7-c773-4d2d-9bab-06ab40ec13bd",
+          "firstName": "Brad",
+          "lastName": "Jordan"
+        },
+        {
+          "id": "9f51ecaa-6cf7-4f66-9920-857765262da2",
+          "firstName": "Aprille",
+          "lastName": "Jordan"
+        }
+      ],
+      "assetId": "93019DAF-E0EE-438F-B90B-16C3A1B3CE9B"
     }
   ]
 }

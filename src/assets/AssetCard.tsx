@@ -33,8 +33,8 @@ export default function AssetCard(props: AssetCardProps): React.ReactElement {
                 <CardContent sx={{width: 650}}>
                     <Typography fontSize={42}>{props.asset.name}</Typography>
                     <Box sx={{marginBottom: 6}}>
-                        <Rating name="read-only" value={Math.floor(Math.random() * 5) + 1} readOnly/>
-                        <Typography fontSize={12} color='black' component="legend">{Math.floor(Math.random() * 1000)} Reviews</Typography>
+                        <Rating name="read-only" value={props.asset.stars} readOnly/>
+                        <Typography fontSize={12} color='black' component="legend">{props.asset.reviews} Reviews</Typography>
                     </Box>
                     <Typography variant="body2">
                         {props.asset.location}
