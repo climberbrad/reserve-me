@@ -33,7 +33,13 @@
       "location": "Vail, CO",
       "quote": "Powder hungry",
       "numSleeps": 12,
-      "bookings": [],
+      "bookings": [
+        {
+          "tripId": "69ee1cca-255f-434e-acf0-4b6eab41f83d",
+          "startDate": 1704178800,
+          "endDate": 1704438000
+        }
+      ],
       "image": "https://media.istockphoto.com/id/182702386/photo/ski-in-out.jpg?s=612x612&w=0&k=20&c=x8GxxSwhPYUlMWuzYcQItKobm3wP2Kjo7MFuI2TcNQM="
     },
     {
@@ -66,7 +72,13 @@
       "location": "Napa Valley, CA",
       "quote": "Wine and cheese lovers delight",
       "numSleeps": 8,
-      "bookings": [],
+      "bookings": [
+        {
+          "tripId": "8f0d7cad-f212-4b5f-9916-064ef6545142",
+          "startDate": 1704178800,
+          "endDate": 1704438000
+        }
+      ],
       "image": "https://living.qa.acg.aaa.com/content/dam/aaa-living/Travel/7-Things-to-Do-in-the-French-Countryside/03-182059250_1400x1050.jpg"
     },
     {
@@ -92,6 +104,67 @@
         }
       ],
       "assetId": "2A4CAF9C-9DC3-43D0-A124-33B944A30F42"
+    },
+    {
+      "id": "69ee1cca-255f-434e-acf0-4b6eab41f83d",
+      "startDate": 1704178800,
+      "endDate": 1704438000,
+      "guests": [
+        {
+          "id": "b8769bf4-a541-4b8a-b7d4-5af00dd3a0f8",
+          "firstName": "Brad",
+          "lastName": "Jordan"
+        },
+        {
+          "id": "941809bc-7e05-4393-a691-f7b421dc652c",
+          "firstName": "Alanya",
+          "lastName": "Jordan"
+        },
+        {
+          "id": "7201f521-ba68-470a-b3fb-dfd23768fae2",
+          "firstName": "Eva",
+          "lastName": "Jordan"
+        },
+        {
+          "id": "7794cc91-9e5f-4e0d-9c2c-af9b5135dfd7",
+          "firstName": "Mommy",
+          "lastName": "Jordan"
+        }
+      ],
+      "assetId": "FB9D7809-DF58-4675-ADB2-9C9A4DA055F8"
+    },
+    {
+      "id": "8f0d7cad-f212-4b5f-9916-064ef6545142",
+      "startDate": 1704178800,
+      "endDate": 1704438000,
+      "guests": [
+        {
+          "id": "6534654f-82f1-408a-9a47-26e2ad8b49a5",
+          "firstName": "Brad",
+          "lastName": "Jordan"
+        },
+        {
+          "id": "b9401368-622c-4d7d-94cf-242ce5c8b7d7",
+          "firstName": "Mommy",
+          "lastName": "Jordan"
+        },
+        {
+          "id": "4a9d7466-fbe5-458d-a366-8dd1de6fd067",
+          "firstName": "Alanya",
+          "lastName": "Jordan"
+        },
+        {
+          "id": "3801d648-663e-4ace-9afe-52bfb8e32a73",
+          "firstName": "Eva",
+          "lastName": "Jordan"
+        },
+        {
+          "id": "2af1f84e-d921-46c8-a6f8-fbe8d1d10dbe",
+          "firstName": "Uncle",
+          "lastName": "Craig"
+        }
+      ],
+      "assetId": "2474ED7C-57F6-43D3-BD6D-85E07392E9CD"
     }
   ]
 }

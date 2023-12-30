@@ -1,5 +1,4 @@
 import './App.css'
-import {Sidebar} from "./trips/Sidebar.tsx";
 import {useState} from "react";
 import {Alert, Snackbar} from "@mui/material";
 import AssetList from "./assets/AssetList.tsx";
@@ -11,7 +10,7 @@ import {
 } from "react-router-dom";
 import Trips from "./trips/Trips.tsx";
 import useAssetHook from "./hooks/useAssetHook.ts";
-import {AssetFilter, EMPTY_ASSET_FILTER} from "./Types.ts";
+import {AssetFilter, DEFAULT_FILTER} from "./Types.ts";
 import AssetDetail from "./assets/AssetDetail.tsx";
 
 export const drawerWidth = 250;
@@ -26,8 +25,9 @@ export const drawerWidth = 250;
 // [ ] rename API to server
 
 function App() {
-    const [filter, setFilter] = useState<AssetFilter>(EMPTY_ASSET_FILTER)
+    const [filter, setFilter] = useState<AssetFilter>(DEFAULT_FILTER)
     const [tripError, setTripError] = useState<boolean>(false)
+
 
     const tripHook = useTripHook();
     const assetHook = useAssetHook();
@@ -41,8 +41,7 @@ function App() {
 
     return (
         <>
-            <HeaderBar/>
-            <Sidebar filter={filter} handleFilter={setFilter}/>
+            <HeaderBar filter={filter} handleUpdateFilter={setFilter}/>
             <Routes>
                 <Route path="*"
                        element={

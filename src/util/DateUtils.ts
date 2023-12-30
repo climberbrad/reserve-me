@@ -39,16 +39,24 @@ export function daysFromNow(epochSec: number): number {
     return daysBetween(nowOffset, epochSec)
 }
 
-const isTripOverlappingBooking = (window: Booking, filter: AssetFilter) : boolean => {
-    if(!filter.startDate || !filter.endDate) return true
+const overlapsExisting = (window: Booking, filter: AssetFilter): boolean => {
+    const testStart = filter.startDate || 0
+    const testEnd = filter.endDate || 0
 
-    return filter.startDate > window.endDate || filter.endDate < window.startDate;
+    return testStart >= window.startDate && testStart <= window.endDate
+    || testEnd >= window.startDate && testEnd <= window.endDate
+    || window.startDate >= testStart && window.startDate <= testEnd
+    || window.endDate >= testStart && window.endDate <= testEnd
 }
 
 export function isAvailable(filter: AssetFilter, asset: AssetData): boolean {
-    if(asset.bookings.length === 0) return true
+    if (asset.bookings.length === 0) return true
+    if (!filter.startDate && !filter.endDate) return true
 
-    return asset.bookings.every((booking) => isTripOverlappingBooking(booking, filter))
+    const overlaps = asset.bookings.every((booking) => overlapsExisting(booking, filter))
+    console.log('isAvailable start', asset.name, !overlaps)
+
+    return !overlaps
 }
 
 export const isValidTrip = (trip: TripData): boolean => {

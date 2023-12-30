@@ -10,11 +10,18 @@ import {
     Tooltip,
     Typography
 } from "@mui/material";
-import {drawerWidth} from "./App.tsx";
 import {useState} from "react";
 import {Link} from "react-router-dom";
+import {AltRoute} from "@mui/icons-material";
+import {AssetFilter} from "./Types.ts";
+import AssetFilterCard from "./assets/AssetFilterCard.tsx";
 
-export default function HeaderBar(): React.ReactElement {
+interface HeaderBarProps {
+    filter: AssetFilter;
+    handleUpdateFilter: (filter: AssetFilter) => void;
+}
+
+export default function HeaderBar(props: HeaderBarProps): React.ReactElement {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
     const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -29,15 +36,24 @@ export default function HeaderBar(): React.ReactElement {
         <>
             <AppBar
                 position="fixed"
-                sx={{width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px`}}
+                // sx={{width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px`}}
             >
-            {/*    <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>*/}
+                {/*    <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>*/}
                 <Box sx={{display: 'flex', justifyContent: 'space-between', marginRight: 2}}>
                     <Toolbar>
-                        <Link key='home' to='/'>
-                            <Typography fontSize={36} color='#ffffff'>Weekend Getaway</Typography>
-                        </Link>
+                        <Box sx={{display: 'flex', gap: 1, marginTop: 1}}>
+                            <AltRoute sx={{color: '#FFFFFF', width: 52, height: 52, marginLeft: -2}}/>
+                            <Link key='home' to='/'>
+                                <Box sx={{display: 'flex', flexDirection: 'column'}}>
+                                    <Typography fontSize={36} color='#ffffff'>Weekends</Typography>
+                                    <Typography color='#ffffff' sx={{marginTop: -1}} align='left' fontSize={14} fontFamily='sans-serif'>Find
+                                        your next
+                                        adventure</Typography>
+                                </Box>
+                            </Link>
+                        </Box>
                     </Toolbar>
+                    <AssetFilterCard filter={props.filter} handleUpdateFilter={props.handleUpdateFilter} />
                     <Tooltip title="Account settings">
                         <IconButton
                             onClick={handleClick}

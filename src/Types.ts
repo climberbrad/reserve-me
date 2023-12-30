@@ -29,14 +29,14 @@ export interface TripData {
 }
 
 export interface AssetFilter {
-    startDate: number | undefined;
-    endDate: number | undefined;
+    startDate: number;
+    endDate: number;
     numPeople: number;
 }
 
-export const EMPTY_ASSET_FILTER = {
-    startDate: undefined,
-    endDate: undefined,
+export const DEFAULT_FILTER: AssetFilter = {
+    startDate: Date.now(),
+    endDate: Math.max(),
     numPeople: 0,
 }
 

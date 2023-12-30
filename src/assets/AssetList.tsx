@@ -28,7 +28,7 @@ export default function AssetList(props: AssetListProps): React.ReactElement {
             {props.assets
                 .filter((asset) => filterNumPeople(asset, props.filter))
                 .filter((asset) => isAvailable(props.filter, asset))
-                .map((asset) => <AssetCard key={asset.id} {...asset}/>)
+                .map((asset, index) => <AssetCard key={asset.id} asset={asset} index={index}/>)
             }
         </>)
 }

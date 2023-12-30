@@ -1,41 +1,54 @@
 import {
+    Box,
     Card,
     CardContent,
-    CardHeader,
-    CardMedia,
+    CardMedia, Rating,
     Typography
 } from "@mui/material";
 import {AssetData} from "../Types.ts";
 import {Link} from "react-router-dom";
+import React from "react";
 
+interface AssetCardProps {
+    index: number;
+    asset: AssetData;
+}
 
-export default function AssetCard(asset: AssetData): React.ReactElement {
+export default function AssetCard(props: AssetCardProps): React.ReactElement {
     return (
-        <Link to={`/asset-detail/${asset.id}`}>
-            <Card sx={{width: 650, marginBottom: 4, background: '#f8f9fc'}}>
-                <CardHeader
-                    title={asset.name}
-                    // subheader={`${formatDate(asset.availability[0].start)} - ${formatDate(asset.availability[0].end)}`}
-                />
+        <Link to={`/asset-detail/${props.asset.id}`}>
+            <Card sx={{marginBottom: 4, background: '#f8f9fc'}}>
+                {/*<CardHeader*/}
+                {/*    title={props.asset.name}*/}
+                {/*    subheader={`${formatDate(props.asset.availability[0].start)} - ${formatDate(props.asset.availability[0].end)}`}*/}
+                {/*/>*/}
+                <Box sx={{display: 'flex', flexDirection: props.index % 2 === 0 ? 'row-reverse' : 'row'}}>
                 <CardMedia
                     component="img"
-                    height="194"
-                    image={asset.image}
+                    height="350"
+                    image={props.asset.image}
                     alt="Paella dish"
                 />
-                <CardContent>
+
+                <CardContent sx={{width: 650}}>
+                    <Typography fontSize={42}>{props.asset.name}</Typography>
+                    <Box sx={{marginBottom: 6}}>
+                        <Rating name="read-only" value={Math.floor(Math.random() * 5) + 1} readOnly/>
+                        <Typography fontSize={12} color='black' component="legend">{Math.floor(Math.random() * 1000)} Reviews</Typography>
+                    </Box>
                     <Typography variant="body2">
-                        {asset.location}
+                        {props.asset.location}
                         <br/>
-                        "{asset.quote}"
+                        "{props.asset.quote}"
                     </Typography>
                     <Typography variant="body2">
-                        Sleeps: {asset.numSleeps}
+                        Sleeps: {props.asset.numSleeps}
                     </Typography>
                     <Typography variant="body2">
                         {/*available in: {daysFromNow(asset.availability[0].start)} days*/}
                     </Typography>
                 </CardContent>
+                </Box>
             </Card>
         </Link>
     )

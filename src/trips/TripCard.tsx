@@ -26,7 +26,7 @@ export default function TripCard({trip}: { trip: TripData }): React.ReactElement
                 />
                 <CardContent>
                     <Typography variant="body2" color="text.secondary">
-                        Guests: {trip.guests.map((guest) => guest.firstName)}
+                        Guests: {trip.guests.map((guest) => guest.firstName).join(',')}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
                         {asset?.location}
