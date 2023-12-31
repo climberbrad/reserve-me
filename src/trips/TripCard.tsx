@@ -41,10 +41,10 @@ export default function TripCard({trip}: { trip: TripData }): React.ReactElement
                         </Box>
                         </Grid>
                         <Grid item xs={12}>
-                            <CheckInOut/>
+                            <CheckInOut {...trip}/>
                         </Grid>
                         <Grid item xs={12}>
-                            <Typography align='left'>We hope you find your most wonderful stay with us. Enjoy our
+                            <Typography fontFamily='sans-serif' align='left'>We hope you find your most wonderful stay with us. Enjoy our
                                 amazing amenities like the luxurious bath or our wonderful blender.
                                 Pop toast with modern kitchen appliances as you relax on our rustic
                                 chair and enjoy wifi or TV. Let the comfort sink in and enjoy your stay.
