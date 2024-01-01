@@ -1,9 +1,5 @@
 import {AssetData, AssetFilter, Booking, TripData} from "../Types.ts";
 
-export function wait(duration: number) {
-    return new Promise(resolve => setTimeout(resolve, duration))
-}
-
 export const formatDate = (utc: number): string => {
     return new Date(utc * 1000).toDateString()
 }
@@ -54,7 +50,6 @@ export function isAvailable(filter: AssetFilter, asset: AssetData): boolean {
     if (!filter.startDate && !filter.endDate) return true
 
     const overlaps = asset.bookings.every((booking) => overlapsExisting(booking, filter))
-    console.log('isAvailable start', asset.name, !overlaps)
 
     return !overlaps
 }

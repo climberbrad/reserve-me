@@ -16,13 +16,19 @@ import AssetDetail from "./assets/AssetDetail.tsx";
 export const drawerWidth = 250;
 
 // TODO
-// [x] Optimistic updates
-// [x] Backend API
+// [X] Optimistic updates
+// [X] Backend API
+// [X] test API errors
 // [ ] Endless scroll
-// [ ] Search
-// [ ] test API errors
 // [ ] rename API to server
 // [ ] Google maps
+
+// ideas
+// [ ] aggregate airbnb data via api for best deals
+// [ ] aggregate real estate data to find deals
+// [ ] better craig's list
+// [ ] movie/tv ratings and comments across platforms
+// [ ] better mountain project
 
 function App() {
     const [filter, setFilter] = useState<AssetFilter>(DEFAULT_FILTER)

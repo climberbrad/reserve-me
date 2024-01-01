@@ -1,5 +1,4 @@
 import {useMutation, UseMutationResult, useQuery, useQueryClient, UseQueryResult} from "@tanstack/react-query";
-import {wait} from "../util/DateUtils.ts";
 import {AssetData} from "../Types.ts";
 import Api from "../Api.ts";
 
@@ -15,7 +14,7 @@ export default function useAssetHook(): assetHookResponse {
 
     const assetQuery = useQuery({
         queryKey: ['assets'],
-        queryFn: () => wait(1000).then(api.getAssets)
+        queryFn: api.getAssets
     })
 
     const getAssetQuery = (id: string) => useQuery({
@@ -24,7 +23,7 @@ export default function useAssetHook(): assetHookResponse {
     })
 
     const updateAssetMutation = useMutation({
-        mutationFn: (asset: AssetData) => wait(1000).then(() => api.updateAsset(asset)),
+        mutationFn: (asset: AssetData) => api.updateAsset(asset),
         onSuccess: () => {
             void queryClient.invalidateQueries({queryKey: ['assets']})
         },

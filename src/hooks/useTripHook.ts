@@ -1,5 +1,4 @@
 import {useMutation, UseMutationResult, useQuery, useQueryClient, UseQueryResult} from "@tanstack/react-query";
-import {wait} from "../util/DateUtils.ts";
 import {TripData} from "../Types.ts";
 import Api from "../Api.ts";
 
@@ -14,7 +13,7 @@ export default function useTripHook(): tripHookResponse {
 
     const tripsQuery = useQuery({
         queryKey: ['trips'],
-        queryFn: () => wait(1000).then(api.getTrips)
+        queryFn: api.getTrips
     })
 
     const createTripMutation = useMutation({
