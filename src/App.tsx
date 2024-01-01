@@ -24,11 +24,9 @@ export const drawerWidth = 250;
 // [ ] Google maps
 
 // ideas
-// [ ] aggregate airbnb data via api for best deals
-// [ ] aggregate real estate data to find deals
-// [ ] better craig's list
-// [ ] movie/tv ratings and comments across platforms
-// [ ] better mountain project
+// [ ] filters work on trips and asset list but not on asset-detail page
+// [ ] add graphs for usage (# reserved/month) ($spent/month) (#people/reservation) (locations)
+// [ ] make [directions] work with google maps
 
 function App() {
     const [filter, setFilter] = useState<AssetFilter>(DEFAULT_FILTER)
