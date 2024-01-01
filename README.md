@@ -17,7 +17,7 @@ is standard react + typescript leveraging [MUI](https://mui.com/) UI tools and r
 ### React Query
 This project leverages React Query as an async data caching layer. This enables cache refreshing during `PUT` and `POST` operations as well as optimistic updates.
 
-![img_1.png](img_1.png)
+![img.png](img.png)
 
 There are three main pages to the UI. The listing page, `/`, the details page, `/asset-detail/<ID>` page and the trips page, `/trips/`.
 Axios is leveraged at the API layer and the resulting data delivered via custom hooks to the react components.
