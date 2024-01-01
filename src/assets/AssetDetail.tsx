@@ -28,10 +28,10 @@ export default function AssetDetail(): React.ReactElement {
 
     if (!id) return <></>
 
-    const {data, isLoading, isError, error} = assetHook.getAsset(id)
+    const {data, isLoading, isError} = assetHook.getAsset(id)
 
-    if (isLoading) return <Typography fontSize={54}>Loading...</Typography>
-    if (isError) return <pre>{JSON.stringify(error)}</pre>
+    if (isLoading) return <Typography color='#C0C0C0' fontSize={54}>Loading...</Typography>
+    if (isError) return <Typography color='#C0C0C0' fontSize={36}>There was an error loading your data.</Typography>
 
     const handleReserve = (asset: AssetData, trip: TripData): void => {
         if (!trip.startDate || !trip.endDate || trip.guests.length === 0) {

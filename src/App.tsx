@@ -16,13 +16,13 @@ import AssetDetail from "./assets/AssetDetail.tsx";
 export const drawerWidth = 250;
 
 // TODO
-// [ ] Optimistic updates
+// [x] Optimistic updates
+// [x] Backend API
 // [ ] Endless scroll
 // [ ] Search
-// [ ] Google maps
-// [x] Backend API
 // [ ] test API errors
 // [ ] rename API to server
+// [ ] Google maps
 
 function App() {
     const [filter, setFilter] = useState<AssetFilter>(DEFAULT_FILTER)
@@ -59,7 +59,7 @@ function App() {
                         <Trips
                             trips={tripHook.results.data || []}
                             isLoading={tripHook.create.isPending || tripHook.results.isLoading}
-                            isError={tripHook.create.isError}
+                            isError={tripHook.create.isError || tripHook.results.isError}
                             error={tripHook.create.error}
                         />
                     }

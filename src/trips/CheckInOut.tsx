@@ -17,21 +17,21 @@ export default function CheckInOut(trip: TripData): React.ReactElement {
 
                 </Box>
                 <Divider sx={{height: 50}} orientation='vertical' variant='fullWidth'/>
-                <Box>
-                    <Typography color='#000000' fontFamily='sans-serif' fontSize={20}>Check-out</Typography>
-                    <Typography fontFamily='sans-serif' fontSize={14}>{new Date(trip.endDate * 1000).toDateString()}</Typography>
-                    <Typography fontFamily='sans-serif' fontSize={14}>11:00am</Typography>
-
-                </Box>
-                <Divider sx={{height: 50}} orientation='vertical' variant='fullWidth'/>
-                <Box sx={{display: 'flex', flexDirection: 'column', gap: 1, marginRight: 4}}>
+                <Box sx={{display: 'flex', flexDirection: 'column', gap: 1}}>
                     <Typography color='#000000' fontFamily='sans-serif' fontSize={20}>Amenities</Typography>
-                    <Box display='flex' gap={1}>
+                    <Box display='flex' gap={1.5}>
                         <WifiIcon/>
                         <ConnectedTvIcon/>
                         <BathtubIcon/>
                         <BlenderIcon/>
                     </Box>
+                </Box>
+                <Divider sx={{height: 50}} orientation='vertical' variant='fullWidth'/>
+                <Box sx={{marginRight: 4}}>
+                    <Typography color='#000000' fontFamily='sans-serif' fontSize={20}>Check-out</Typography>
+                    <Typography fontFamily='sans-serif' fontSize={14}>{new Date(trip.endDate * 1000).toDateString()}</Typography>
+                    <Typography fontFamily='sans-serif' fontSize={14}>11:00am</Typography>
+
                 </Box>
             </Box>
         </Box>

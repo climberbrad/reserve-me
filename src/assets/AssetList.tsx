@@ -20,8 +20,8 @@ export default function AssetList(props: AssetListProps): React.ReactElement {
         return true;
     }
 
-    if (props.isLoading) return <Typography fontSize={54}>Loading...</Typography>
-    if (props.isError) return <pre>{JSON.stringify(props.error)}</pre>
+    if (props.isLoading) return <Typography color='#C0C0C0' fontSize={54}>Loading...</Typography>
+    if (props.isError) return <Typography color='#C0C0C0' fontSize={36}>There was an error loading your data.</Typography>
 
     return (
         <>

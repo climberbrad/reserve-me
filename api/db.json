@@ -144,6 +144,39 @@
       "reviews": 4,
       "image": "https://www.joshandersonrealestate.com/admin/wp-content/uploads/2020/08/Screen-Shot-2020-08-17-at-11.07.44-AM.png",
       "stars": 1
+    },
+    {
+      "id": "D7813FC1-531F-44D8-BC2B-90FDF287FF52",
+      "name": "Lake of the clouds",
+      "location": "Ozarks, MO",
+      "quote": "No place like home!",
+      "numSleeps": 7,
+      "bookings": [],
+      "reviews": 457,
+      "image": "https://www.vrbo.com/vacation-ideas/wp-content/uploads/1DTUyRkyAlI6Ahn5zJpjhu/baaae21ff7944284e60566d01ab6a400/23a7f487-7205-45d2-9359-38ea9942d1f5.lg1.jpg",
+      "stars": 4
+    },
+    {
+      "id": "AACF2039-3E2F-4B70-B327-F99F080FFDE9",
+      "name": "Gator cove",
+      "location": "Crystal Springs,FL",
+      "quote": "Up the river without a paddle",
+      "numSleeps": 1,
+      "bookings": [],
+      "reviews": 1,
+      "image": "https://a0.muscache.com/im/pictures/ce7cfedd-42a5-4f74-a93b-6026116e9895.jpg",
+      "stars": 1
+    },
+    {
+      "id": "4FAC355C-1A37-4538-8191-3AE7AD37F2FC",
+      "name": "Michigan summers",
+      "location": "Traverse City,MI",
+      "quote": "Honey I shrunk the lake",
+      "numSleeps": 4,
+      "bookings": [],
+      "reviews": 679,
+      "image": "https://a0.muscache.com/im/pictures/8534b0f0-90ea-452e-a34f-2d261a8cff4b.jpg?im_w=720",
+      "stars": 3
     }
   ],
   "Trips": [
