@@ -1,5 +1,5 @@
 import {ReactElement} from "react";
-import {Typography} from "@mui/material";
+import {Divider, Typography} from "@mui/material";
 import TripCard from "./TripCard.tsx";
 import {TripData} from "../Types.ts";
 

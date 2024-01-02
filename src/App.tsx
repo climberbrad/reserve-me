@@ -1,6 +1,6 @@
 import './App.css'
 import {useState} from "react";
-import {Alert, Snackbar} from "@mui/material";
+import {Alert, Box, Snackbar} from "@mui/material";
 import AssetList from "./assets/AssetList.tsx";
 import useTripHook from "./hooks/useTripHook.ts";
 import HeaderBar from "./HeaderBar.tsx";
@@ -12,6 +12,7 @@ import Trips from "./trips/Trips.tsx";
 import useAssetHook from "./hooks/useAssetHook.ts";
 import {AssetFilter, DEFAULT_FILTER} from "./Types.ts";
 import AssetDetail from "./assets/AssetDetail.tsx";
+import AssetFilterCard from "./assets/AssetFilterCard.tsx";
 
 export const drawerWidth = 250;
 
@@ -19,11 +20,15 @@ export const drawerWidth = 250;
 // [X] Optimistic updates
 // [X] Backend API
 // [X] test API errors
+// [ ] Hosting
 // [ ] Endless scroll
 // [ ] rename API to server
 // [ ] Google maps
 
 // ideas
+// [ ] do not allow users to pick booked dates in details page
+// [ ] use material themes rather than hard coded colors
+// [ ] fit to screen on resize
 // [ ] filters work on trips and asset list but not on asset-detail page
 // [ ] add graphs for usage (# reserved/month) ($spent/month) (#people/reservation) (locations)
 // [ ] make [directions] work with google maps
@@ -45,32 +50,37 @@ function App() {
 
     return (
         <>
-            <HeaderBar filter={filter} handleUpdateFilter={setFilter}/>
+            <HeaderBar/>
             <Routes>
                 <Route path="*"
                        element={
-                           <AssetList
-                               isLoading={assetHook.results.isLoading}
-                               assets={assetHook.results.data || []}
-                               isError={assetHook.results.isError}
-                               error={assetHook.results.error}
-                               filter={filter}/>
-                       }/>
+                           <>
+                               <AssetFilterCard filter={filter} handleUpdateFilter={setFilter}/>
+                               <AssetList
+                                   isLoading={assetHook.results.isLoading}
+                                   assets={assetHook.results.data || []}
+                                   isError={assetHook.results.isError}
+                                   error={assetHook.results.error}
+                                   filter={filter}/>
+                           </>
+                       }
+                />
                 <Route
                     key={'/trips/'}
                     path={'/trips/'}
                     element={
-                        <Trips
-                            trips={tripHook.results.data || []}
-                            isLoading={tripHook.create.isPending || tripHook.results.isLoading}
-                            isError={tripHook.create.isError || tripHook.results.isError}
-                            error={tripHook.create.error}
-                        />
-                    }
-                />
+                        <Box sx={{marginTop: 8}}>
+                            <Trips
+                                trips={tripHook.results.data || []}
+                                isLoading={tripHook.create.isPending || tripHook.results.isLoading}
+                                isError={tripHook.create.isError || tripHook.results.isError}
+                                error={tripHook.create.error}
+                            />
+                        </Box>
+                    }/>
                 <Route key={'/asset-detail'}
                        path={'/asset-detail/:id'}
-                       element={<AssetDetail/>}
+                       element={<Box sx={{marginTop: 8}}><AssetDetail/></Box>}
                 />
             </Routes>
             <Snackbar anchorOrigin={{vertical: 'top', horizontal: 'center'}}

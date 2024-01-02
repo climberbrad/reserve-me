@@ -13,15 +13,9 @@ import {
 import {useState} from "react";
 import {Link} from "react-router-dom";
 import {AltRoute} from "@mui/icons-material";
-import {AssetFilter} from "./Types.ts";
-import AssetFilterCard from "./assets/AssetFilterCard.tsx";
 
-interface HeaderBarProps {
-    filter: AssetFilter;
-    handleUpdateFilter: (filter: AssetFilter) => void;
-}
 
-export default function HeaderBar(props: HeaderBarProps): React.ReactElement {
+export default function HeaderBar(): React.ReactElement {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
     const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -34,11 +28,7 @@ export default function HeaderBar(props: HeaderBarProps): React.ReactElement {
 
     return (
         <>
-            <AppBar
-                position="fixed"
-                // sx={{width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px`}}
-            >
-                {/*    <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>*/}
+            <AppBar position="fixed">
                 <Box sx={{display: 'flex', justifyContent: 'space-between', marginRight: 2}}>
                     <Toolbar>
                         <Box sx={{display: 'flex', gap: 1, marginTop: 1}}>
@@ -53,7 +43,6 @@ export default function HeaderBar(props: HeaderBarProps): React.ReactElement {
                             </Link>
                         </Box>
                     </Toolbar>
-                    <AssetFilterCard filter={props.filter} handleUpdateFilter={props.handleUpdateFilter} />
                     <Tooltip title="Account settings">
                         <IconButton
                             onClick={handleClick}
@@ -116,7 +105,6 @@ export default function HeaderBar(props: HeaderBarProps): React.ReactElement {
                     </Menu>
                 </Box>
             </AppBar>
-            <Toolbar/>
         </>
     )
 

@@ -81,79 +81,84 @@ export default function AssetDetail(): React.ReactElement {
         setTrip({...trip, guests: listCopy})
     }
 
-    return (<>
-        <Typography marginY={1} align='left' color='#000000' fontSize={36}>{data?.name}</Typography>
+    return (
+        <>
+            <Typography marginY={1} align='left' color='#000000' fontSize={36}>Book your stay</Typography>
+            <Typography marginY={1} align='left' color='#000000' fontSize={24}>{data?.name}</Typography>
 
-        <Card sx={{width: 550}}>
-            <CardMedia
-                component="img"
-                height="194"
-                image={data?.image}
-                alt="Paella dish"
-            />
-        </Card>
-        <Typography marginBottom={2} align='left' color='#000000' fontSize={16}>"{data?.quote}"</Typography>
-        <Typography align='left' color='#000000' fontSize={20}>Located in {data?.location}</Typography>
-        <Typography align='left' color='#000000' fontSize={20}>Sleeps {data?.numSleeps} people</Typography>
+            <Card sx={{width: 550}}>
+                <CardMedia
+                    component="img"
+                    height="194"
+                    image={data?.image}
+                    alt="Paella dish"
+                />
+            </Card>
+            <Typography marginBottom={2} align='left' color='#000000' fontSize={16}>"{data?.quote}"</Typography>
+            <Typography align='left' color='#000000' fontSize={20}>Located in {data?.location}</Typography>
+            <Typography align='left' color='#000000' fontSize={20}>Sleeps {data?.numSleeps} people</Typography>
 
-        <Box
-            sx={{display: 'flex', justifyContent: 'space-between', border: 1, borderRadius: 2, borderColor: '#c2baba', marginY: 2, padding: 1}}>
-            <Box>
-                <Rating name="rating" value={data?.stars} readOnly/>
-                <Typography color='black' component="legend">{data?.reviews} Reviews</Typography>
+            <Box
+                sx={{display: 'flex', justifyContent: 'space-between', border: 1, borderRadius: 2, borderColor: '#c2baba', marginY: 2, padding: 1}}>
+                <Box>
+                    <Rating name="rating" value={data?.stars} readOnly/>
+                    <Typography color='black' component="legend">{data?.reviews} Reviews</Typography>
+                </Box>
+                <Box sx={{marginX: 2, display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
+                    <Typography color='black' fontFamily='fantasy' component="legend">One of my favorite places to
+                        stay!</Typography>
+                    <Typography fontFamily='fantasy' color='black' component="legend">Home away from home, just
+                        better.</Typography>
+                </Box>
             </Box>
-            <Box sx={{marginX: 2, display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
-                <Typography color='black' fontFamily='fantasy' component="legend">One of my favorite places to
-                    stay!</Typography>
-                <Typography fontFamily='fantasy' color='black' component="legend">Home away from home, just
-                    better.</Typography>
-            </Box>
-        </Box>
 
-        <Typography sx={{marginTop: 8}} align='left' color='#000000' fontSize={12}>Featured in "Awesome places to
-            stay"</Typography>
-        <Divider sx={{marginY: 2}}/>
-        <form onSubmit={handleSubmit}>
-            <Typography sx={{marginY: 2}} align='left' color='#000000' fontSize={20}>Book your stay</Typography>
-            <Box sx={{gap: 2, display: 'flex'}}>
-                <FormControl variant="standard" sx={{m: 1, minWidth: 120, color: '#70d1da'}}>
-                    <TextField
-                        required
-                        variant="standard"
-                        sx={{color: '#70d1da'}}
-                        id="startDate"
-                        label="Start"
-                        type="date"
-                        InputLabelProps={{
-                            shrink: true,
-                        }}
-                        defaultValue={trip.startDate || ''}
-                        onChange={handleUpdateStart}
-                    />
-                </FormControl>
-                <FormControl variant="standard" sx={{m: 1, minWidth: 120, color: '#70d1da'}}>
-                    <TextField
-                        required
-                        variant="standard"
-                        sx={{color: '#70d1da'}}
-                        id="endDate"
-                        label="End"
-                        type="date"
-                        InputLabelProps={{
-                            shrink: true,
-                        }}
-                        defaultValue={trip.startDate || ''}
-                        onChange={handleUpdateEnd}
-                    />
-                </FormControl>
-            </Box>
-            <Typography sx={{marginY: 2}} align='left' color='#6b6861' fontSize={12}>
-                Guests (max {data?.numSleeps})
-            </Typography>
-            <GuestList guestList={trip.guests.length === 0 ? [{id: crypto.randomUUID(), firstName: '', lastName: ''}] : trip.guests} addOrUpdate={addOrUpdateGuest}/>
-            <Box sx={{marginY: 4, display: 'flex'}}>
-                <Button disabled={!isValidTrip(trip)} type='submit' sx={{border: 1, borderRadius: 1}}>Book It</Button>
-            </Box>
-        </form>
-    </>)
+            <Typography sx={{marginTop: 8}} align='left' color='#000000' fontSize={12}>Featured in "Awesome places to
+                stay"</Typography>
+            <Divider sx={{marginY: 2}}/>
+            <form onSubmit={handleSubmit}>
+                <Typography sx={{marginY: 2}} align='left' color='#000000' fontSize={20}>Trip details</Typography>
+                <Box sx={{gap: 2, display: 'flex'}}>
+                    <FormControl variant="standard" sx={{m: 1, minWidth: 120, color: '#70d1da'}}>
+                        <TextField
+                            required
+                            variant="standard"
+                            sx={{color: '#70d1da'}}
+                            id="startDate"
+                            label="Start"
+                            type="date"
+                            InputLabelProps={{
+                                shrink: true,
+                            }}
+                            defaultValue={trip.startDate || ''}
+                            onChange={handleUpdateStart}
+                        />
+                    </FormControl>
+                    <FormControl variant="standard" sx={{m: 1, minWidth: 120, color: '#70d1da'}}>
+                        <TextField
+                            required
+                            variant="standard"
+                            sx={{color: '#70d1da'}}
+                            id="endDate"
+                            label="End"
+                            type="date"
+                            InputLabelProps={{
+                                shrink: true,
+                            }}
+                            defaultValue={trip.startDate || ''}
+                            onChange={handleUpdateEnd}
+                        />
+                    </FormControl>
+                </Box>
+                <Typography sx={{marginY: 2}} align='left' color='#6b6861' fontSize={12}>
+                    Guests (max {data?.numSleeps})
+                </Typography>
+                <GuestList
+                    guestList={trip.guests.length === 0 ? [{id: crypto.randomUUID(), firstName: '', lastName: ''}] : trip.guests}
+                    addOrUpdate={addOrUpdateGuest}/>
+                <Box sx={{marginY: 4, display: 'flex'}}>
+                    <Button disabled={!isValidTrip(trip)} type='submit' sx={{border: 1, borderRadius: 1}}>Book
+                        It</Button>
+                </Box>
+            </form>
+        </>)
 }

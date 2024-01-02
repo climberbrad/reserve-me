@@ -1,5 +1,5 @@
 import React from "react";
-import {Box, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent, TextField} from "@mui/material";
+import {FormControl, Grid, InputLabel, MenuItem, Select, SelectChangeEvent, TextField} from "@mui/material";
 import {AssetFilter} from "../Types.ts";
 import {toEpocSecondsFromDate} from "../util/DateUtils.ts";
 
@@ -8,7 +8,7 @@ interface AssetFilterCardProps {
     handleUpdateFilter: (filter: AssetFilter) => void;
 }
 
-export default function AssetFilterCard(props: AssetFilterCardProps) : React.ReactElement {
+export default function AssetFilterCard(props: AssetFilterCardProps): React.ReactElement {
     const handleUpdateGuests = (event: SelectChangeEvent<number>) => {
         const guests = event.target.value;
         props.handleUpdateFilter({...props.filter, numPeople: !guests ? 0 : guests as number})
@@ -22,11 +22,24 @@ export default function AssetFilterCard(props: AssetFilterCardProps) : React.Rea
         props.handleUpdateFilter({...props.filter, endDate: toEpocSecondsFromDate(event.target.value)})
     }
 
+    const MAX_GUESTS = 10
+
+    const menuItems = (): React.ReactElement[] => {
+        const stuff: React.ReactElement[] = []
+        stuff.push(<MenuItem value={0}>Any</MenuItem>)
+
+        for (let i = 0; i < MAX_GUESTS; i++) {
+            stuff.push(<MenuItem value={i + 1}>{i + 1}</MenuItem>)
+        }
+
+        return stuff
+    }
+
     return (
-        <Box sx={{display: 'flex', gap: 6, marginLeft: -24}}>
-            <FormControl variant="standard" sx={{marginTop: 3.5}}>
+        <Grid zIndex={1} paddingTop={7} paddingBottom={1} bgcolor='#FFFFFF' container justifyContent="center"
+              position='fixed' gap={12}>
+            <FormControl variant="standard">
                 <TextField
-                    sx={{ label: {color: '#ffffff'}, input: { color: '#ffffff' } }}
                     variant="standard"
                     id="startDate"
                     label="Start"
@@ -38,9 +51,8 @@ export default function AssetFilterCard(props: AssetFilterCardProps) : React.Rea
                     onChange={(e) => handleUpdateStart(e)}
                 />
             </FormControl>
-            <FormControl variant="standard" sx={{marginTop: 3.5}}>
+            <FormControl variant="standard">
                 <TextField
-                    sx={{ label: {color: '#ffffff'}, input: { color: '#ffffff' } }}
                     variant="standard"
                     id="endDate"
                     label="End"
@@ -52,31 +64,19 @@ export default function AssetFilterCard(props: AssetFilterCardProps) : React.Rea
                     onChange={(e) => handleUpdateEnd(e)}
                 />
             </FormControl>
-            <FormControl variant="standard" sx={{marginTop: 3.5}}>
+            <FormControl variant="standard">
                 <InputLabel
-                    sx={{ color: '#ffffff' }}
                     id="trip-num-people-label">Guests</InputLabel>
                 <Select
-                    sx={{ color: '#ffffff' }}
                     labelId="trip-num-people-label"
                     id="trip-num-people-select"
                     value={props.filter.numPeople}
                     onChange={(e) => handleUpdateGuests(e)}
                     label="Guests"
                 >
-                    <MenuItem value={0}>Any</MenuItem>
-                    <MenuItem value={1}>One</MenuItem>
-                    <MenuItem value={2}>Two</MenuItem>
-                    <MenuItem value={3}>Three</MenuItem>
-                    <MenuItem value={4}>Four</MenuItem>
-                    <MenuItem value={5}>Five</MenuItem>
-                    <MenuItem value={6}>Six</MenuItem>
-                    <MenuItem value={7}>Seven</MenuItem>
-                    <MenuItem value={8}>Eight</MenuItem>
-                    <MenuItem value={9}>Nine</MenuItem>
-                    <MenuItem value={10}>Ten</MenuItem>
+                    {menuItems()}
                 </Select>
             </FormControl>
-        </Box>
+        </Grid>
     )
 }

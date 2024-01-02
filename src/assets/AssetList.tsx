@@ -1,5 +1,5 @@
 import AssetCard from "./AssetCard.tsx";
-import {Typography} from "@mui/material";
+import {Divider, Typography} from "@mui/material";
 import {AssetData, AssetFilter} from "../Types.ts";
 import {isAvailable} from "../util/DateUtils.ts";
 
@@ -21,14 +21,16 @@ export default function AssetList(props: AssetListProps): React.ReactElement {
     }
 
     if (props.isLoading) return <Typography color='#C0C0C0' fontSize={54}>Loading...</Typography>
-    if (props.isError) return <Typography color='#C0C0C0' fontSize={36}>There was an error loading your data.</Typography>
+    if (props.isError) return <Typography color='#C0C0C0' fontSize={36}>There was an error loading your
+        data.</Typography>
 
     return (
         <>
-            {props.assets
-                .filter((asset) => filterNumPeople(asset, props.filter))
-                .filter((asset) => isAvailable(props.filter, asset))
-                .map((asset, index) => <AssetCard key={asset.id} asset={asset} index={index}/>)
+            <Divider sx={{height: 120}}/>
+                {props.assets
+                    .filter((asset) => filterNumPeople(asset, props.filter))
+                    .filter((asset) => isAvailable(props.filter, asset))
+                    .map((asset, index) => <AssetCard key={asset.id} asset={asset} index={index}/>)
+                }
+            </>)
             }
-        </>)
-}
