@@ -29,7 +29,7 @@ export default function HeaderBar(): React.ReactElement {
     return (
         <>
             <AppBar position="fixed">
-                <Box sx={{display: 'flex', justifyContent: 'space-between', marginRight: 2}}>
+                <Box sx={{bgcolor:'#5ead5f', display: 'flex', justifyContent: 'space-between', paddingRight: 2}}>
                     <Toolbar>
                         <Box sx={{display: 'flex', gap: 1, marginTop: 1}}>
                             <AltRoute sx={{color: '#FFFFFF', width: 52, height: 52, marginLeft: -2}}/>

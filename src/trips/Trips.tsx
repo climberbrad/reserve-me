@@ -1,5 +1,5 @@
 import {ReactElement} from "react";
-import {Divider, Typography} from "@mui/material";
+import {Typography} from "@mui/material";
 import TripCard from "./TripCard.tsx";
 import {TripData} from "../Types.ts";
 
@@ -17,6 +17,7 @@ export default function Trips(props: TripsProps): ReactElement {
 
     return (
         <>
+            <Typography marginY={1} align='left' color='#000000' fontSize={36}>Your trips</Typography>
             {props.trips
                 .sort((a, b) =>
                     (a.startDate && b.startDate) ? a.startDate - b.startDate : 0)

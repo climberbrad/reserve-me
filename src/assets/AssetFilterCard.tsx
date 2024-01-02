@@ -26,10 +26,10 @@ export default function AssetFilterCard(props: AssetFilterCardProps): React.Reac
 
     const menuItems = (): React.ReactElement[] => {
         const stuff: React.ReactElement[] = []
-        stuff.push(<MenuItem value={0}>Any</MenuItem>)
+        stuff.push(<MenuItem key={0} value={0}>Any</MenuItem>)
 
         for (let i = 0; i < MAX_GUESTS; i++) {
-            stuff.push(<MenuItem value={i + 1}>{i + 1}</MenuItem>)
+            stuff.push(<MenuItem key={i+1} value={i + 1}>{i + 1}</MenuItem>)
         }
 
         return stuff

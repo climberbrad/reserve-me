@@ -39,13 +39,7 @@
       "location": "Vail, CO",
       "quote": "Powder hungry",
       "numSleeps": 12,
-      "bookings": [
-        {
-          "tripId": "69ee1cca-255f-434e-acf0-4b6eab41f83d",
-          "startDate": 1704178800,
-          "endDate": 1704438000
-        }
-      ],
+      "bookings": [],
       "image": "https://media.istockphoto.com/id/182702386/photo/ski-in-out.jpg?s=612x612&w=0&k=20&c=x8GxxSwhPYUlMWuzYcQItKobm3wP2Kjo7MFuI2TcNQM=",
       "reviews": 4690,
       "stars": 5
@@ -84,18 +78,7 @@
       "location": "Napa Valley, CA",
       "quote": "Wine and cheese lovers delight",
       "numSleeps": 8,
-      "bookings": [
-        {
-          "tripId": "8f0d7cad-f212-4b5f-9916-064ef6545142",
-          "startDate": 1704178800,
-          "endDate": 1704438000
-        },
-        {
-          "tripId": "06011e71-69f3-46f7-bb18-64484887a7df",
-          "startDate": 1704178800,
-          "endDate": 1704092400
-        }
-      ],
+      "bookings": [],
       "image": "https://living.qa.acg.aaa.com/content/dam/aaa-living/Travel/7-Things-to-Do-in-the-French-Countryside/03-182059250_1400x1050.jpg",
       "reviews": 44,
       "stars": 2
@@ -106,18 +89,7 @@
       "location": "Hilton Head, SC",
       "quote": "Endless Summer",
       "numSleeps": 6,
-      "bookings": [
-        {
-          "tripId": "fa00fb62-b389-4b47-b165-2d0f9d29b99a",
-          "startDate": 1704178800,
-          "endDate": 1704438000
-        },
-        {
-          "tripId": "3d07d116-7734-497e-82d5-6681729962cf",
-          "startDate": 1704178800,
-          "endDate": 1704697200
-        }
-      ],
+      "bookings": [],
       "image": "https://i0.wp.com/garrisoncharleston.com/wp-content/uploads/2022/08/Best-Beach-Towns-South-Carolina.jpg?fit=800%2C533&ssl=1",
       "reviews": 3745,
       "stars": 5
@@ -202,111 +174,6 @@
         }
       ],
       "assetId": "2A4CAF9C-9DC3-43D0-A124-33B944A30F42"
-    },
-    {
-      "id": "69ee1cca-255f-434e-acf0-4b6eab41f83d",
-      "startDate": 1704178800,
-      "endDate": 1704438000,
-      "guests": [
-        {
-          "id": "b8769bf4-a541-4b8a-b7d4-5af00dd3a0f8",
-          "firstName": "Brad",
-          "lastName": "Jordan"
-        },
-        {
-          "id": "941809bc-7e05-4393-a691-f7b421dc652c",
-          "firstName": "Alanya",
-          "lastName": "Jordan"
-        },
-        {
-          "id": "7201f521-ba68-470a-b3fb-dfd23768fae2",
-          "firstName": "Eva",
-          "lastName": "Jordan"
-        },
-        {
-          "id": "7794cc91-9e5f-4e0d-9c2c-af9b5135dfd7",
-          "firstName": "Mommy",
-          "lastName": "Jordan"
-        }
-      ],
-      "assetId": "FB9D7809-DF58-4675-ADB2-9C9A4DA055F8"
-    },
-    {
-      "id": "8f0d7cad-f212-4b5f-9916-064ef6545142",
-      "startDate": 1704178800,
-      "endDate": 1704438000,
-      "guests": [
-        {
-          "id": "6534654f-82f1-408a-9a47-26e2ad8b49a5",
-          "firstName": "Brad",
-          "lastName": "Jordan"
-        },
-        {
-          "id": "b9401368-622c-4d7d-94cf-242ce5c8b7d7",
-          "firstName": "Mommy",
-          "lastName": "Jordan"
-        },
-        {
-          "id": "4a9d7466-fbe5-458d-a366-8dd1de6fd067",
-          "firstName": "Alanya",
-          "lastName": "Jordan"
-        },
-        {
-          "id": "3801d648-663e-4ace-9afe-52bfb8e32a73",
-          "firstName": "Eva",
-          "lastName": "Jordan"
-        },
-        {
-          "id": "2af1f84e-d921-46c8-a6f8-fbe8d1d10dbe",
-          "firstName": "Uncle",
-          "lastName": "Craig"
-        }
-      ],
-      "assetId": "2474ED7C-57F6-43D3-BD6D-85E07392E9CD"
-    },
-    {
-      "id": "fa00fb62-b389-4b47-b165-2d0f9d29b99a",
-      "startDate": 1704178800,
-      "endDate": 1704438000,
-      "guests": [
-        {
-          "id": "91b3ffe7-c773-4d2d-9bab-06ab40ec13bd",
-          "firstName": "Brad",
-          "lastName": "Jordan"
-        },
-        {
-          "id": "9f51ecaa-6cf7-4f66-9920-857765262da2",
-          "firstName": "Aprille",
-          "lastName": "Jordan"
-        }
-      ],
-      "assetId": "93019DAF-E0EE-438F-B90B-16C3A1B3CE9B"
-    },
-    {
-      "id": "06011e71-69f3-46f7-bb18-64484887a7df",
-      "startDate": 1704178800,
-      "endDate": 1704092400,
-      "guests": [
-        {
-          "id": "c30d8491-0b66-4088-a93c-973c0ee4588f",
-          "firstName": "Aprille",
-          "lastName": "Jordan"
-        }
-      ],
-      "assetId": "2474ED7C-57F6-43D3-BD6D-85E07392E9CD"
-    },
-    {
-      "id": "3d07d116-7734-497e-82d5-6681729962cf",
-      "startDate": 1704178800,
-      "endDate": 1704697200,
-      "guests": [
-        {
-          "id": "e7f3dc80-d94f-474b-9dde-b362a24be793",
-          "firstName": "Tester",
-          "lastName": "DupDates"
-        }
-      ],
-      "assetId": "93019DAF-E0EE-438F-B90B-16C3A1B3CE9B"
     }
   ]
 }

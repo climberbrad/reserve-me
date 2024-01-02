@@ -35,7 +35,7 @@ export function daysFromNow(epochSec: number): number {
     return daysBetween(nowOffset, epochSec)
 }
 
-const overlapsExisting = (window: Booking, filter: AssetFilter): boolean => {
+export const overlapsExisting = (window: Booking, filter: AssetFilter): boolean => {
     const testStart = filter.startDate || 0
     const testEnd = filter.endDate || 0
 

@@ -1,37 +1,40 @@
-import React, {useState} from "react";
 import {
     Box,
     Button,
     Card,
     CardMedia,
     Divider,
-    FormControl,
     Rating,
-    TextField,
     Typography
 } from "@mui/material";
 import useAssetHook from "../hooks/useAssetHook.ts";
 import {useNavigate, useParams} from "react-router-dom";
-import {AssetData, Booking, EMPTY_TRIP, Guest, TripData} from "../Types.ts";
+import {AssetData, AssetFilter, Booking, Guest, TripData} from "../Types.ts";
 import useTripHook from "../hooks/useTripHook.ts";
-import {isValidTrip, toEpocSecondsFromDate} from "../util/DateUtils.ts";
+import {isValidTrip, overlapsExisting} from "../util/DateUtils.ts";
 import GuestList from "../trips/GuestList.tsx";
+import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
+import {DatePicker, LocalizationProvider} from "@mui/x-date-pickers";
+import dayjs from 'dayjs';
 
-export default function AssetDetail(): React.ReactElement {
+interface AssetDetailProps {
+    trip: TripData;
+    setTrip: (trip: TripData) => void;
+}
+
+export default function AssetDetail(props: AssetDetailProps): React.ReactElement {
     const tripHook = useTripHook();
     const assetHook = useAssetHook();
-
-    const {id} = useParams();
     const navigate = useNavigate();
 
-    const [trip, setTrip] = useState<TripData>(EMPTY_TRIP);
-
+    const {id} = useParams();
     if (!id) return <></>
 
     const {data, isLoading, isError} = assetHook.getAsset(id)
 
     if (isLoading) return <Typography color='#C0C0C0' fontSize={54}>Loading...</Typography>
     if (isError) return <Typography color='#C0C0C0' fontSize={36}>There was an error loading your data.</Typography>
+
 
     const handleReserve = (asset: AssetData, trip: TripData): void => {
         if (!trip.startDate || !trip.endDate || trip.guests.length === 0) {
@@ -56,29 +59,38 @@ export default function AssetDetail(): React.ReactElement {
             })
     }
 
+    console.log('trip', props.trip)
+
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
 
-        data && handleReserve(data, trip)
-    }
-
-    const handleUpdateStart = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        setTrip({...trip, startDate: toEpocSecondsFromDate(event.target.value)})
-    }
-
-    const handleUpdateEnd = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        setTrip({...trip, endDate: toEpocSecondsFromDate(event.target.value)})
+        data && handleReserve(data, props.trip)
     }
 
     const addOrUpdateGuest = (newGuewst: Guest) => {
-        if (data?.numSleeps === trip.guests.length) return
+        if (data?.numSleeps === props.trip.guests.length) return
 
-        const index = trip.guests.findIndex((guest) => guest.id === newGuewst.id)
-        const listCopy = [...trip.guests]
+        const index = props.trip.guests.findIndex((guest) => guest.id === newGuewst.id)
+        const listCopy = [...props.trip.guests]
 
         index !== -1 ? listCopy[index] = newGuewst : listCopy.push(newGuewst)
 
-        setTrip({...trip, guests: listCopy})
+        props.setTrip({...props.trip, guests: listCopy})
+    }
+
+    function disableExistingBookings(date: dayjs.Dayjs): boolean {
+        if (data?.bookings.length === 0) return false
+
+        const filter: AssetFilter = {startDate: date.unix(), endDate: date.unix(), numPeople: 0}
+        return data?.bookings.find((booking) => overlapsExisting(booking, filter)) !== undefined
+    }
+
+    const updateStart = (value: dayjs.Dayjs | null) => {
+        props.setTrip({...props.trip, endDate: value?.unix()})
+    }
+
+    const updateEnd = (value: dayjs.Dayjs | null) => {
+        props.setTrip({...props.trip, endDate: value?.unix()})
     }
 
     return (
@@ -118,45 +130,35 @@ export default function AssetDetail(): React.ReactElement {
             <form onSubmit={handleSubmit}>
                 <Typography sx={{marginY: 2}} align='left' color='#000000' fontSize={20}>Trip details</Typography>
                 <Box sx={{gap: 2, display: 'flex'}}>
-                    <FormControl variant="standard" sx={{m: 1, minWidth: 120, color: '#70d1da'}}>
-                        <TextField
-                            required
-                            variant="standard"
-                            sx={{color: '#70d1da'}}
-                            id="startDate"
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                        <DatePicker
                             label="Start"
-                            type="date"
-                            InputLabelProps={{
-                                shrink: true,
-                            }}
-                            defaultValue={trip.startDate || ''}
-                            onChange={handleUpdateStart}
+                            value={props.trip?.startDate && dayjs(props.trip?.startDate * 1000) || undefined}
+                            onChange={updateStart}
+                            disablePast
+                            maxDate={props.trip?.endDate && dayjs(props.trip?.endDate * 1000) || undefined}
+                            shouldDisableDate={disableExistingBookings}
+
                         />
-                    </FormControl>
-                    <FormControl variant="standard" sx={{m: 1, minWidth: 120, color: '#70d1da'}}>
-                        <TextField
-                            required
-                            variant="standard"
-                            sx={{color: '#70d1da'}}
-                            id="endDate"
+                        <DatePicker
                             label="End"
-                            type="date"
-                            InputLabelProps={{
-                                shrink: true,
-                            }}
-                            defaultValue={trip.startDate || ''}
-                            onChange={handleUpdateEnd}
+                            disablePast
+                            value={props.trip?.endDate && dayjs(props.trip?.endDate * 1000) || null}
+                            minDate={props.trip?.startDate && dayjs(props.trip?.startDate * 1000) || undefined}
+                            onChange={updateEnd}
+                            shouldDisableDate={disableExistingBookings}
+
                         />
-                    </FormControl>
+                    </LocalizationProvider>
                 </Box>
-                <Typography sx={{marginY: 2}} align='left' color='#6b6861' fontSize={12}>
+                <Typography sx={{marginY: 2}} align='left' color='#6b6861' fontSize={14}>
                     Guests (max {data?.numSleeps})
                 </Typography>
                 <GuestList
-                    guestList={trip.guests.length === 0 ? [{id: crypto.randomUUID(), firstName: '', lastName: ''}] : trip.guests}
+                    guestList={props.trip.guests.length === 0 ? [{id: crypto.randomUUID(), firstName: '', lastName: ''}] : props.trip.guests}
                     addOrUpdate={addOrUpdateGuest}/>
                 <Box sx={{marginY: 4, display: 'flex'}}>
-                    <Button disabled={!isValidTrip(trip)} type='submit' sx={{border: 1, borderRadius: 1}}>Book
+                    <Button disabled={!isValidTrip(props.trip)} type='submit' sx={{border: 1, borderRadius: 1}}>Book
                         It</Button>
                 </Box>
             </form>

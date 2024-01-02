@@ -10,7 +10,7 @@ import {
 } from "react-router-dom";
 import Trips from "./trips/Trips.tsx";
 import useAssetHook from "./hooks/useAssetHook.ts";
-import {AssetFilter, DEFAULT_FILTER} from "./Types.ts";
+import {AssetFilter, DEFAULT_FILTER, EMPTY_TRIP, TripData} from "./Types.ts";
 import AssetDetail from "./assets/AssetDetail.tsx";
 import AssetFilterCard from "./assets/AssetFilterCard.tsx";
 
@@ -35,18 +35,11 @@ export const drawerWidth = 250;
 
 function App() {
     const [filter, setFilter] = useState<AssetFilter>(DEFAULT_FILTER)
-    const [tripError, setTripError] = useState<boolean>(false)
-
 
     const tripHook = useTripHook();
     const assetHook = useAssetHook();
 
-    const handleClose = (_: React.SyntheticEvent | Event, reason?: string) => {
-        if (reason === 'clickaway') {
-            return;
-        }
-        setTripError(false);
-    };
+    const [trip, setTrip] = useState<TripData>(EMPTY_TRIP)
 
     return (
         <>
@@ -80,15 +73,9 @@ function App() {
                     }/>
                 <Route key={'/asset-detail'}
                        path={'/asset-detail/:id'}
-                       element={<Box sx={{marginTop: 8}}><AssetDetail/></Box>}
+                       element={<Box sx={{marginTop: 8}}><AssetDetail trip={trip} setTrip={setTrip}/></Box>}
                 />
             </Routes>
-            <Snackbar anchorOrigin={{vertical: 'top', horizontal: 'center'}}
-                      open={tripError} autoHideDuration={6000} onClose={handleClose}>
-                <Alert onClose={handleClose} severity="error" sx={{width: '100%'}}>
-                    Please Fill out All Trip Fields!
-                </Alert>
-            </Snackbar>
         </>
     )
 }
