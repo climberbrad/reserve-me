@@ -1,10 +1,11 @@
 import {Box, Button, TextField} from "@mui/material";
 import {Guest} from "../Types.ts";
 import React from "react";
+import {newGuest} from "../util/RandomUtils.ts";
 
 interface GuestFormProps {
     guest: Guest;
-    updateGuest: (guest: Guest) => void;
+    addOrUpdate: (guest: Guest) => void;
     canAddGuest: boolean;
 }
 
@@ -12,12 +13,12 @@ export default function GuestForm(props: GuestFormProps): React.ReactElement {
 
     const handleChangeFirstName = (event: React.ChangeEvent<HTMLInputElement>) => {
         const fname = event.target.value
-        props.updateGuest({...props.guest, firstName: fname})
+        props.addOrUpdate({...props.guest, firstName: fname})
     }
 
     const handleChangeLastName = (event: React.ChangeEvent<HTMLInputElement>) => {
         const lname = event.target.value
-        props.updateGuest({...props.guest, lastName: lname})
+        props.addOrUpdate({...props.guest, lastName: lname})
     }
 
     return (
@@ -51,7 +52,7 @@ export default function GuestForm(props: GuestFormProps): React.ReactElement {
                 />
                 {props.canAddGuest && (
                     <Button sx={{fontSize: 20, marginTop: 2}} disabled={false} size='small'
-                            onClick={() => props.updateGuest({id: crypto.randomUUID(), firstName: '', lastName: ''})}
+                            onClick={() => props.addOrUpdate(newGuest())}
                             aria-label='Add Guest'>+
                     </Button>
                 )}

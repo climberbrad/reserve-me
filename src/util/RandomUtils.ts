@@ -1,4 +1,4 @@
-import {AssetData, AssetFilter, Booking, TripData} from "../Types.ts";
+import {AssetData, AssetFilter, Booking, Guest, TripData} from "../Types.ts";
 
 export const formatDate = (utc: number): string => {
     return new Date(utc * 1000).toDateString()
@@ -40,9 +40,9 @@ export const overlapsExisting = (window: Booking, filter: AssetFilter): boolean 
     const testEnd = filter.endDate || 0
 
     return testStart >= window.startDate && testStart <= window.endDate
-    || testEnd >= window.startDate && testEnd <= window.endDate
-    || window.startDate >= testStart && window.startDate <= testEnd
-    || window.endDate >= testStart && window.endDate <= testEnd
+        || testEnd >= window.startDate && testEnd <= window.endDate
+        || window.startDate >= testStart && window.startDate <= testEnd
+        || window.endDate >= testStart && window.endDate <= testEnd
 }
 
 export function isAvailable(filter: AssetFilter, asset: AssetData): boolean {
@@ -56,4 +56,8 @@ export function isAvailable(filter: AssetFilter, asset: AssetData): boolean {
 
 export const isValidTrip = (trip: TripData): boolean => {
     return !!trip.endDate && !!trip.startDate && trip.guests.length > 0
+}
+
+export const newGuest = (): Guest => {
+    return {id: crypto.randomUUID(), firstName: '', lastName: ''}
 }

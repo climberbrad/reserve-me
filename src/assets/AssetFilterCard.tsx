@@ -1,7 +1,7 @@
 import React from "react";
 import {FormControl, Grid, InputLabel, MenuItem, Select, SelectChangeEvent, TextField} from "@mui/material";
 import {AssetFilter} from "../Types.ts";
-import {toEpocSecondsFromDate} from "../util/DateUtils.ts";
+import {toEpocSecondsFromDate} from "../util/RandomUtils.ts";
 
 interface AssetFilterCardProps {
     filter: AssetFilter;

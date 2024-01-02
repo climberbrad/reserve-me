@@ -1,7 +1,7 @@
 import AssetCard from "./AssetCard.tsx";
 import {Divider, Typography} from "@mui/material";
 import {AssetData, AssetFilter} from "../Types.ts";
-import {isAvailable} from "../util/DateUtils.ts";
+import {isAvailable} from "../util/RandomUtils.ts";
 
 interface AssetListProps {
     isLoading: boolean,

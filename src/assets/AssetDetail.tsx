@@ -11,7 +11,7 @@ import useAssetHook from "../hooks/useAssetHook.ts";
 import {useNavigate, useParams} from "react-router-dom";
 import {AssetData, AssetFilter, Booking, Guest, TripData} from "../Types.ts";
 import useTripHook from "../hooks/useTripHook.ts";
-import {isValidTrip, overlapsExisting} from "../util/DateUtils.ts";
+import {isValidTrip, newGuest, overlapsExisting} from "../util/RandomUtils.ts";
 import GuestList from "../trips/GuestList.tsx";
 import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
 import {DatePicker, LocalizationProvider} from "@mui/x-date-pickers";
@@ -59,8 +59,6 @@ export default function AssetDetail(props: AssetDetailProps): React.ReactElement
             })
     }
 
-    console.log('trip', props.trip)
-
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
 
@@ -68,8 +66,6 @@ export default function AssetDetail(props: AssetDetailProps): React.ReactElement
     }
 
     const addOrUpdateGuest = (newGuewst: Guest) => {
-        if (data?.numSleeps === props.trip.guests.length) return
-
         const index = props.trip.guests.findIndex((guest) => guest.id === newGuewst.id)
         const listCopy = [...props.trip.guests]
 
@@ -86,7 +82,7 @@ export default function AssetDetail(props: AssetDetailProps): React.ReactElement
     }
 
     const updateStart = (value: dayjs.Dayjs | null) => {
-        props.setTrip({...props.trip, endDate: value?.unix()})
+        props.setTrip({...props.trip, startDate: value?.unix()})
     }
 
     const updateEnd = (value: dayjs.Dayjs | null) => {
@@ -155,7 +151,8 @@ export default function AssetDetail(props: AssetDetailProps): React.ReactElement
                     Guests (max {data?.numSleeps})
                 </Typography>
                 <GuestList
-                    guestList={props.trip.guests.length === 0 ? [{id: crypto.randomUUID(), firstName: '', lastName: ''}] : props.trip.guests}
+                    maxGuests={data?.numSleeps || 0}
+                    guestList={props.trip.guests.length === 0 ? [newGuest()] : props.trip.guests}
                     addOrUpdate={addOrUpdateGuest}/>
                 <Box sx={{marginY: 4, display: 'flex'}}>
                     <Button disabled={!isValidTrip(props.trip)} type='submit' sx={{border: 1, borderRadius: 1}}>Book

@@ -1,6 +1,6 @@
 import './App.css'
 import {useState} from "react";
-import {Alert, Box, Snackbar} from "@mui/material";
+import {Box} from "@mui/material";
 import AssetList from "./assets/AssetList.tsx";
 import useTripHook from "./hooks/useTripHook.ts";
 import HeaderBar from "./HeaderBar.tsx";
@@ -31,7 +31,7 @@ export const drawerWidth = 250;
 // [ ] fit to screen on resize
 // [ ] filters work on trips and asset list but not on asset-detail page
 // [ ] add graphs for usage (# reserved/month) ($spent/month) (#people/reservation) (locations)
-// [ ] make [directions] work with google maps
+// [ ] make [directions] work with Google Maps
 
 function App() {
     const [filter, setFilter] = useState<AssetFilter>(DEFAULT_FILTER)
