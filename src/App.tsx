@@ -26,12 +26,13 @@ export const drawerWidth = 250;
 // [ ] Google maps
 
 // ideas
-// [ ] do not allow users to pick booked dates in details page
+// [X] do not allow users to pick booked dates in details page
 // [ ] use material themes rather than hard coded colors
 // [ ] fit to screen on resize
-// [ ] filters work on trips and asset list but not on asset-detail page
+// [X] filters work on trips and asset list but not on asset-detail page
 // [ ] add graphs for usage (# reserved/month) ($spent/month) (#people/reservation) (locations)
 // [ ] make [directions] work with Google Maps
+// [ ] remove/add Profile and Account
 
 function App() {
     const [filter, setFilter] = useState<AssetFilter>(DEFAULT_FILTER)
