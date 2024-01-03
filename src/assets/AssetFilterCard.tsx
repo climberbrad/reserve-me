@@ -55,7 +55,7 @@ export default function AssetFilterCard(props: AssetFilterCardProps): React.Reac
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                     <DatePicker
                         label="Start"
-                        value={props.filter.startDate && dayjs(props.filter.startDate * 1000) || undefined}
+                        value={props.filter.startDate && dayjs(props.filter.startDate * 1000) || null}
                         onChange={updateStart}
                         disablePast
                         sx={{width: FILTER_WIDTH}}

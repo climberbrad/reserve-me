@@ -9,23 +9,22 @@ import {
 } from "@mui/material";
 import useAssetHook from "../hooks/useAssetHook.ts";
 import {useNavigate, useParams} from "react-router-dom";
-import {AssetData, AssetFilter, Booking, Guest, TripData} from "../Types.ts";
+import {AssetData, AssetFilter, Booking, EMPTY_TRIP, Guest, TripData} from "../Types.ts";
 import useTripHook from "../hooks/useTripHook.ts";
 import {isValidTrip, newGuest, overlapsExisting} from "../util/RandomUtils.ts";
 import GuestList from "../trips/GuestList.tsx";
 import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
 import {DatePicker, LocalizationProvider} from "@mui/x-date-pickers";
 import dayjs from 'dayjs';
+import {useState} from "react";
 
-interface AssetDetailProps {
-    trip: TripData;
-    setTrip: (trip: TripData) => void;
-}
 
-export default function AssetDetail(props: AssetDetailProps): React.ReactElement {
+export default function AssetDetail(): React.ReactElement {
     const tripHook = useTripHook();
     const assetHook = useAssetHook();
     const navigate = useNavigate();
+
+    const [trip, setTrip] = useState<TripData>(EMPTY_TRIP)
 
     const {id} = useParams();
     if (!id) return <></>
@@ -62,16 +61,16 @@ export default function AssetDetail(props: AssetDetailProps): React.ReactElement
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
 
-        data && handleReserve(data, props.trip)
+        data && handleReserve(data, trip)
     }
 
     const addOrUpdateGuest = (newGuewst: Guest) => {
-        const index = props.trip.guests.findIndex((guest) => guest.id === newGuewst.id)
-        const listCopy = [...props.trip.guests]
+        const index = trip.guests.findIndex((guest) => guest.id === newGuewst.id)
+        const listCopy = [...trip.guests]
 
         index !== -1 ? listCopy[index] = newGuewst : listCopy.push(newGuewst)
 
-        props.setTrip({...props.trip, guests: listCopy})
+        setTrip({...trip, guests: listCopy})
     }
 
     function disableExistingBookings(date: dayjs.Dayjs): boolean {
@@ -82,11 +81,11 @@ export default function AssetDetail(props: AssetDetailProps): React.ReactElement
     }
 
     const updateStart = (value: dayjs.Dayjs | null) => {
-        props.setTrip({...props.trip, startDate: value?.unix()})
+        setTrip({...trip, startDate: value?.unix()})
     }
 
     const updateEnd = (value: dayjs.Dayjs | null) => {
-        props.setTrip({...props.trip, endDate: value?.unix()})
+        setTrip({...trip, endDate: value?.unix()})
     }
 
     return (
@@ -129,18 +128,18 @@ export default function AssetDetail(props: AssetDetailProps): React.ReactElement
                     <LocalizationProvider dateAdapter={AdapterDayjs}>
                         <DatePicker
                             label="Start"
-                            value={props.trip?.startDate && dayjs(props.trip?.startDate * 1000) || undefined}
+                            value={trip?.startDate && dayjs(trip?.startDate * 1000) || undefined}
                             onChange={updateStart}
                             disablePast
-                            maxDate={props.trip?.endDate && dayjs(props.trip?.endDate * 1000) || undefined}
+                            maxDate={trip?.endDate && dayjs(trip?.endDate * 1000) || undefined}
                             shouldDisableDate={disableExistingBookings}
 
                         />
                         <DatePicker
                             label="End"
                             disablePast
-                            value={props.trip?.endDate && dayjs(props.trip?.endDate * 1000) || null}
-                            minDate={props.trip?.startDate && dayjs(props.trip?.startDate * 1000) || undefined}
+                            value={trip?.endDate && dayjs(trip?.endDate * 1000) || null}
+                            minDate={trip?.startDate && dayjs(trip?.startDate * 1000) || undefined}
                             onChange={updateEnd}
                             shouldDisableDate={disableExistingBookings}
 
@@ -152,10 +151,10 @@ export default function AssetDetail(props: AssetDetailProps): React.ReactElement
                 </Typography>
                 <GuestList
                     maxGuests={data?.numSleeps || 0}
-                    guestList={props.trip.guests.length === 0 ? [newGuest()] : props.trip.guests}
+                    guestList={trip.guests.length === 0 ? [newGuest()] : trip.guests}
                     addOrUpdate={addOrUpdateGuest}/>
                 <Box sx={{marginY: 4, display: 'flex'}}>
-                    <Button disabled={!isValidTrip(props.trip)} type='submit' sx={{border: 1, borderRadius: 1}}>Book
+                    <Button disabled={!isValidTrip(trip)} type='submit' sx={{border: 1, borderRadius: 1}}>Book
                         It</Button>
                 </Box>
             </form>

@@ -49,7 +49,7 @@ export function isAvailable(filter: AssetFilter, asset: AssetData): boolean {
     if (asset.bookings.length === 0) return true
     if (!filter.startDate && !filter.endDate) return true
 
-    const overlaps = asset.bookings.every((booking) => overlapsExisting(booking, filter))
+    const overlaps = asset.bookings.some((booking) => overlapsExisting(booking, filter))
 
     return !overlaps
 }

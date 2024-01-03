@@ -10,7 +10,7 @@ import {
 } from "react-router-dom";
 import Trips from "./trips/Trips.tsx";
 import useAssetHook from "./hooks/useAssetHook.ts";
-import {AssetFilter, DEFAULT_FILTER, EMPTY_TRIP, TripData} from "./Types.ts";
+import {AssetFilter, DEFAULT_FILTER} from "./Types.ts";
 import AssetDetail from "./assets/AssetDetail.tsx";
 import AssetFilterCard from "./assets/AssetFilterCard.tsx";
 
@@ -39,8 +39,6 @@ function App() {
 
     const tripHook = useTripHook();
     const assetHook = useAssetHook();
-
-    const [trip, setTrip] = useState<TripData>(EMPTY_TRIP)
 
     return (
         <>
@@ -74,7 +72,7 @@ function App() {
                     }/>
                 <Route key={'/asset-detail'}
                        path={'/asset-detail/:id'}
-                       element={<Box sx={{marginTop: 8}}><AssetDetail trip={trip} setTrip={setTrip}/></Box>}
+                       element={<Box sx={{marginTop: 8}}><AssetDetail /></Box>}
                 />
             </Routes>
         </>

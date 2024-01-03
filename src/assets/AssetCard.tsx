@@ -18,10 +18,6 @@ export default function AssetCard(props: AssetCardProps): React.ReactElement {
     return (
         <Link to={`/asset-detail/${props.asset.id}`}>
             <Card sx={{marginBottom: 4, background: '#f8f9fc'}}>
-                {/*<CardHeader*/}
-                {/*    title={props.asset.name}*/}
-                {/*    subheader={`${formatDate(props.asset.availability[0].start)} - ${formatDate(props.asset.availability[0].end)}`}*/}
-                {/*/>*/}
                 <Box sx={{display: 'flex', flexDirection: props.index % 2 === 0 ? 'row-reverse' : 'row'}}>
                 <CardMedia
                     component="img"
