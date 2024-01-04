@@ -7,6 +7,9 @@ import BlenderIcon from "@mui/icons-material/Blender";
 import {TripData} from "../Types.ts";
 
 export default function CheckInOut(trip: TripData): React.ReactElement {
+    if(trip.startDate === undefined || trip.endDate === undefined) return <></>
+
+
     return (
         <Box sx={{marginBottom: 2 }}>
             <Box sx={{display: 'flex', justifyContent: 'space-between', paddingBottom: 2}}>
